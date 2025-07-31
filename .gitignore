@@ -3,3 +3,4 @@
 **/global-bundle.pem
 **/__pycache__/
 **/layers/
+connect_ec2.sh
