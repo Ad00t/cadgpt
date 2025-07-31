@@ -1,14 +1,13 @@
 import requests
-import json
-
-BASE_URL = 'https://lmt3yqa7uh.execute-api.us-west-2.amazonaws.com/dev'
-API_KEY = 't4hwon7axc4bA11ySehIR4UN6QxgWVcA7PztIZWE'
+import dotenv
+import os
 
 if __name__ == '__main__':
+    dotenv.load_dotenv('.env')
     response = requests.post(
-        url=f'{BASE_URL}/prompt-handler', 
+        url=f"{os.environ['PROMPT_HANDLER_BASE_URL']}/prompt-handler", 
         headers={
-            'x-api-key': API_KEY 
+            'x-api-key': os.environ['PROMPT_HANDLER_API_KEY'] 
         },
         json={ 
             'prompt': 'a cube with sides of length 10 cm',
