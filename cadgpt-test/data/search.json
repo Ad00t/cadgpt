@@ -1,0 +1,2389 @@
+{
+  "next": "https://cad.onshape.com/api/documents/search?offset=20&limit=20",
+  "href": "https://cad.onshape.com/api/documents/search",
+  "items": [
+    {
+      "jsonType": "document-summary-search",
+      "searchHits": [
+        {
+          "versionOrWorkspaceName": "Main",
+          "state": "IN_PROGRESS",
+          "type": "element",
+          "elementType": "PARTSTUDIO",
+          "revDate": null,
+          "revision": null,
+          "partNumber": null,
+          "elementId": "fca2a805a4203e3b0ebb15c4",
+          "versionOrWorkspace": "w",
+          "versionOrWorkspaceId": "7dc6c005aa367f31e12a6207",
+          "configurationId": null,
+          "isLatestRev": null,
+          "publications": [],
+          "publicationReaders": [],
+          "documentId": "a18db5cf4369f51e551c25bb",
+          "name": "dc motor 6v",
+          "projectId": null,
+          "folderId": null,
+          "sourceMap": {
+            "eid": "fca2a805a4203e3b0ebb15c4",
+            "modifiedAt": 1666314494934,
+            "elementtype": "PARTSTUDIO",
+            "dt": "ELEMENT",
+            "createdAt": 1666314494845,
+            "isAtPublishedFSVersion": false,
+            "elementdatatype": "onshape/partstudio",
+            "namesat": "dc motor 6v",
+            "name": "dc motor 6v",
+            "state": "IN_PROGRESS",
+            "join": {
+              "parent": "a18db5cf4369f51e551c25bb",
+              "name": "element"
+            },
+            "id": "6351f0fe2150fb45a6b149a7",
+            "category": [
+              "5877a03ebe4c21163b49dce5"
+            ],
+            "workspaceid": "7dc6c005aa367f31e12a6207"
+          },
+          "hitId": "6351f0fe2150fb45a6b149a7",
+          "highlightedFields": {
+            "name": [
+              "<os-highlight>dc motor 6v</os-highlight>"
+            ]
+          },
+          "elementName": "dc motor 6v",
+          "meshState": 0
+        }
+      ],
+      "public": true,
+      "permission": "READ_COPY_EXPORT",
+      "defaultElementId": null,
+      "recentVersion": null,
+      "hasRelevantInsertables": false,
+      "canUnshare": false,
+      "userAccountLimitsBreached": false,
+      "supportTeamUserAndShared": false,
+      "isUsingManagedWorkflow": false,
+      "likedByCurrentUser": false,
+      "defaultVersionGraphMode": "ALL_BRANCHES",
+      "defaultVersionGraphShowMerges": true,
+      "defaultVersionGraphShowAutoVersions": true,
+      "sequence": null,
+      "tags": [],
+      "documentType": 0,
+      "thumbnail": {
+        "sizes": [
+          {
+            "size": "300x300",
+            "href": "https://cad.onshape.com/api/thumbnails/d/a18db5cf4369f51e551c25bb/w/7dc6c005aa367f31e12a6207/s/300x300?t=1667862250325",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "300x170",
+            "href": "https://cad.onshape.com/api/thumbnails/d/a18db5cf4369f51e551c25bb/w/7dc6c005aa367f31e12a6207/s/300x170?t=1667862250325",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "600x340",
+            "href": "https://cad.onshape.com/api/thumbnails/d/a18db5cf4369f51e551c25bb/w/7dc6c005aa367f31e12a6207/s/600x340?t=1667862250325",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "70x40",
+            "href": "https://cad.onshape.com/api/thumbnails/d/a18db5cf4369f51e551c25bb/w/7dc6c005aa367f31e12a6207/s/70x40?t=1667862250325",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          }
+        ],
+        "secondarySizes": null,
+        "id": null,
+        "href": "https://cad.onshape.com/api/thumbnails/d/a18db5cf4369f51e551c25bb/w/7dc6c005aa367f31e12a6207?t=1667862250325"
+      },
+      "parentId": "f98435d516ffe4de4f136ec6",
+      "projectId": null,
+      "defaultWorkspace": {
+        "state": null,
+        "canDelete": true,
+        "protectionRule": "OPEN",
+        "isReadOnly": false,
+        "parent": null,
+        "type": null,
+        "creator": null,
+        "lastModifier": null,
+        "description": null,
+        "modifiedAt": null,
+        "thumbnail": null,
+        "documentId": null,
+        "createdAt": null,
+        "microversion": null,
+        "parents": null,
+        "overrideDate": null,
+        "name": "Main",
+        "id": "7dc6c005aa367f31e12a6207",
+        "href": "https://cad.onshape.com/api/v12/documents/d/a18db5cf4369f51e551c25bb/workspaces/7dc6c005aa367f31e12a6207"
+      },
+      "permissionSet": [
+        "LINK",
+        "READ",
+        "EXPORT",
+        "COPY"
+      ],
+      "trash": false,
+      "totalWorkspacesUpdating": 0,
+      "totalWorkspacesScheduledForUpdate": 0,
+      "documentLabels": null,
+      "numberOfTimesReferenced": 0,
+      "numberOfTimesCopied": 2,
+      "likes": 0,
+      "publishedVersionId": null,
+      "notes": null,
+      "notRevisionManaged": false,
+      "forceExportRules": false,
+      "createdWithEducationPlan": false,
+      "anonymousAccessAllowed": false,
+      "anonymousAllowsExport": false,
+      "trashedAt": null,
+      "isOrphaned": false,
+      "hasReleaseRevisionableObjects": false,
+      "owner": {
+        "type": 0,
+        "isEnterpriseOwnedResource": false,
+        "image": "/images/placeholder-user.png",
+        "name": "Rafael Gomez",
+        "id": "5cec891479e2b814e404cb12",
+        "href": "https://cad.onshape.com/api/v12/users/5cec891479e2b814e404cb12"
+      },
+      "connectionName": "",
+      "isMutable": false,
+      "isContainer": false,
+      "canMove": false,
+      "unparentHref": "https://cad.onshape.com/api/globaltreenodes/document/a18db5cf4369f51e551c25bb/parentInfo",
+      "connectionNames": null,
+      "isExternalConnectionResource": false,
+      "description": null,
+      "modifiedAt": "2022-11-07T23:01:06.156+00:00",
+      "createdAt": "2022-10-12T15:42:54.377+00:00",
+      "createdBy": {
+        "jsonType": "user-summary",
+        "state": 1,
+        "isOnshapeSupport": false,
+        "image": "/images/placeholder-user.png",
+        "name": "Rafael Gomez",
+        "id": "5cec891479e2b814e404cb12",
+        "href": "https://cad.onshape.com/api/v12/users/5cec891479e2b814e404cb12"
+      },
+      "modifiedBy": {
+        "jsonType": "user-summary",
+        "state": 1,
+        "isOnshapeSupport": false,
+        "image": "/images/placeholder-user.png",
+        "name": "Rafael Gomez",
+        "id": "5cec891479e2b814e404cb12",
+        "href": "https://cad.onshape.com/api/v12/users/5cec891479e2b814e404cb12"
+      },
+      "isEnterpriseOwned": false,
+      "resourceType": "document",
+      "name": "Deployment Arm",
+      "id": "a18db5cf4369f51e551c25bb",
+      "href": "https://cad.onshape.com/api/documents"
+    },
+    {
+      "jsonType": "document-summary-search",
+      "searchHits": [
+        {
+          "versionOrWorkspaceName": "Main",
+          "state": "IN_PROGRESS",
+          "type": "part",
+          "revDate": null,
+          "revision": null,
+          "partNumber": null,
+          "partId": "JFD",
+          "bodyType": "SOLID",
+          "elementId": "3ce276d87c3a368f08a6ac17",
+          "versionOrWorkspace": "w",
+          "versionOrWorkspaceId": "2ad9ee1be0a32c3d4d96d08d",
+          "configurationId": null,
+          "isLatestRev": null,
+          "publications": [],
+          "publicationReaders": [],
+          "documentId": "7412667ae1ac433ccceb9769",
+          "name": "DC Motor 6v",
+          "projectId": null,
+          "folderId": null,
+          "sourceMap": {
+            "elementid": "3ce276d87c3a368f08a6ac17",
+            "modifiedAt": 1680970395634,
+            "pid": "JFD",
+            "dt": "PART",
+            "createdAt": 1680970392056,
+            "isAtPublishedFSVersion": false,
+            "bodytype": "SOLID",
+            "namesat": "DC Motor 6v",
+            "name": "DC Motor 6v",
+            "state": "IN_PROGRESS",
+            "join": {
+              "parent": "7412667ae1ac433ccceb9769",
+              "name": "part"
+            },
+            "id": "6431929bfd0a232eb418d01a",
+            "category": [
+              "5877a03ebe4c21163b49dce2"
+            ],
+            "elementType": "PARTSTUDIO",
+            "workspaceid": "2ad9ee1be0a32c3d4d96d08d"
+          },
+          "hitId": "6431929bfd0a232eb418d01a",
+          "highlightedFields": {
+            "name": [
+              "<os-highlight>DC</os-highlight> <os-highlight>Motor</os-highlight> <os-highlight>6v</os-highlight>"
+            ]
+          },
+          "elementName": "DC Motor",
+          "meshState": 0
+        },
+        {
+          "versionOrWorkspaceName": "Main",
+          "state": "IN_PROGRESS",
+          "type": "part",
+          "revDate": null,
+          "revision": null,
+          "partNumber": null,
+          "partId": "JFD",
+          "bodyType": "SOLID",
+          "elementId": "5531b426a5133c1837d52946",
+          "versionOrWorkspace": "w",
+          "versionOrWorkspaceId": "2ad9ee1be0a32c3d4d96d08d",
+          "configurationId": null,
+          "isLatestRev": null,
+          "publications": [],
+          "publicationReaders": [],
+          "documentId": "7412667ae1ac433ccceb9769",
+          "name": "DC Motor 6v",
+          "projectId": null,
+          "folderId": null,
+          "sourceMap": {
+            "elementid": "5531b426a5133c1837d52946",
+            "modifiedAt": 1681009585621,
+            "pid": "JFD",
+            "dt": "PART",
+            "createdAt": 1681009582113,
+            "isAtPublishedFSVersion": false,
+            "bodytype": "SOLID",
+            "namesat": "DC Motor 6v",
+            "name": "DC Motor 6v",
+            "state": "IN_PROGRESS",
+            "join": {
+              "parent": "7412667ae1ac433ccceb9769",
+              "name": "part"
+            },
+            "id": "64322bb1fd0a232eb41a1228",
+            "category": [
+              "5877a03ebe4c21163b49dce2"
+            ],
+            "elementType": "PARTSTUDIO",
+            "workspaceid": "2ad9ee1be0a32c3d4d96d08d"
+          },
+          "hitId": "64322bb1fd0a232eb41a1228",
+          "highlightedFields": {
+            "name": [
+              "<os-highlight>DC</os-highlight> <os-highlight>Motor</os-highlight> <os-highlight>6v</os-highlight>"
+            ]
+          },
+          "elementName": "DC Motor",
+          "meshState": 0
+        },
+        {
+          "versionOrWorkspaceName": "Main",
+          "state": "IN_PROGRESS",
+          "type": "part",
+          "revDate": null,
+          "revision": null,
+          "partNumber": null,
+          "partId": "JFD",
+          "bodyType": "SOLID",
+          "elementId": "780a389c3dcfe21feb36556d",
+          "versionOrWorkspace": "w",
+          "versionOrWorkspaceId": "2ad9ee1be0a32c3d4d96d08d",
+          "configurationId": null,
+          "isLatestRev": null,
+          "publications": [],
+          "publicationReaders": [],
+          "documentId": "7412667ae1ac433ccceb9769",
+          "name": "DC Motor 6v",
+          "projectId": null,
+          "folderId": null,
+          "sourceMap": {
+            "elementid": "780a389c3dcfe21feb36556d",
+            "modifiedAt": 1680970883551,
+            "pid": "JFD",
+            "dt": "PART",
+            "createdAt": 1680970881166,
+            "isAtPublishedFSVersion": false,
+            "bodytype": "SOLID",
+            "namesat": "DC Motor 6v",
+            "name": "DC Motor 6v",
+            "state": "IN_PROGRESS",
+            "join": {
+              "parent": "7412667ae1ac433ccceb9769",
+              "name": "part"
+            },
+            "id": "64319483fd0a232eb418d7fa",
+            "category": [
+              "5877a03ebe4c21163b49dce2"
+            ],
+            "elementType": "PARTSTUDIO",
+            "workspaceid": "2ad9ee1be0a32c3d4d96d08d"
+          },
+          "hitId": "64319483fd0a232eb418d7fa",
+          "highlightedFields": {
+            "name": [
+              "<os-highlight>DC</os-highlight> <os-highlight>Motor</os-highlight> <os-highlight>6v</os-highlight>"
+            ]
+          },
+          "elementName": "DC Motor Copy 1",
+          "meshState": 0
+        },
+        {
+          "versionOrWorkspaceName": "Main",
+          "state": "IN_PROGRESS",
+          "type": "part",
+          "revDate": null,
+          "revision": null,
+          "partNumber": null,
+          "partId": "JFD",
+          "bodyType": "SOLID",
+          "elementId": "9fbe8f8379df5ae80ebe3d16",
+          "versionOrWorkspace": "w",
+          "versionOrWorkspaceId": "2ad9ee1be0a32c3d4d96d08d",
+          "configurationId": null,
+          "isLatestRev": null,
+          "publications": [],
+          "publicationReaders": [],
+          "documentId": "7412667ae1ac433ccceb9769",
+          "name": "DC Motor 6v",
+          "projectId": null,
+          "folderId": null,
+          "sourceMap": {
+            "elementid": "9fbe8f8379df5ae80ebe3d16",
+            "modifiedAt": 1680970904971,
+            "pid": "JFD",
+            "dt": "PART",
+            "createdAt": 1680970902583,
+            "isAtPublishedFSVersion": false,
+            "bodytype": "SOLID",
+            "namesat": "DC Motor 6v",
+            "name": "DC Motor 6v",
+            "state": "IN_PROGRESS",
+            "join": {
+              "parent": "7412667ae1ac433ccceb9769",
+              "name": "part"
+            },
+            "id": "64319498fd0a232eb418d84c",
+            "category": [
+              "5877a03ebe4c21163b49dce2"
+            ],
+            "elementType": "PARTSTUDIO",
+            "workspaceid": "2ad9ee1be0a32c3d4d96d08d"
+          },
+          "hitId": "64319498fd0a232eb418d84c",
+          "highlightedFields": {
+            "name": [
+              "<os-highlight>DC</os-highlight> <os-highlight>Motor</os-highlight> <os-highlight>6v</os-highlight>"
+            ]
+          },
+          "elementName": "DC Motor",
+          "meshState": 0
+        }
+      ],
+      "public": true,
+      "permission": "READ_COPY_EXPORT",
+      "defaultElementId": null,
+      "recentVersion": null,
+      "hasRelevantInsertables": false,
+      "canUnshare": false,
+      "userAccountLimitsBreached": false,
+      "supportTeamUserAndShared": false,
+      "isUsingManagedWorkflow": false,
+      "likedByCurrentUser": false,
+      "defaultVersionGraphMode": "ALL_BRANCHES",
+      "defaultVersionGraphShowMerges": true,
+      "defaultVersionGraphShowAutoVersions": true,
+      "sequence": null,
+      "tags": [],
+      "documentType": 0,
+      "thumbnail": {
+        "sizes": [
+          {
+            "size": "600x340",
+            "href": "https://cad.onshape.com/api/thumbnails/d/7412667ae1ac433ccceb9769/w/2ad9ee1be0a32c3d4d96d08d/s/600x340?t=1681473801906",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "300x170",
+            "href": "https://cad.onshape.com/api/thumbnails/d/7412667ae1ac433ccceb9769/w/2ad9ee1be0a32c3d4d96d08d/s/300x170?t=1681473801906",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "70x40",
+            "href": "https://cad.onshape.com/api/thumbnails/d/7412667ae1ac433ccceb9769/w/2ad9ee1be0a32c3d4d96d08d/s/70x40?t=1681473801906",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "300x300",
+            "href": "https://cad.onshape.com/api/thumbnails/d/7412667ae1ac433ccceb9769/w/2ad9ee1be0a32c3d4d96d08d/s/300x300?t=1681473801906",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          }
+        ],
+        "secondarySizes": null,
+        "id": null,
+        "href": "https://cad.onshape.com/api/thumbnails/d/7412667ae1ac433ccceb9769/w/2ad9ee1be0a32c3d4d96d08d?t=1681473801906"
+      },
+      "parentId": null,
+      "projectId": null,
+      "defaultWorkspace": {
+        "state": null,
+        "canDelete": true,
+        "protectionRule": "OPEN",
+        "isReadOnly": false,
+        "parent": null,
+        "type": null,
+        "creator": null,
+        "lastModifier": null,
+        "description": null,
+        "modifiedAt": null,
+        "thumbnail": null,
+        "documentId": null,
+        "createdAt": null,
+        "microversion": null,
+        "parents": null,
+        "overrideDate": null,
+        "name": "Main",
+        "id": "2ad9ee1be0a32c3d4d96d08d",
+        "href": "https://cad.onshape.com/api/v12/documents/d/7412667ae1ac433ccceb9769/workspaces/2ad9ee1be0a32c3d4d96d08d"
+      },
+      "permissionSet": [
+        "LINK",
+        "READ",
+        "EXPORT",
+        "COPY"
+      ],
+      "trash": false,
+      "totalWorkspacesUpdating": 0,
+      "totalWorkspacesScheduledForUpdate": 0,
+      "documentLabels": null,
+      "numberOfTimesReferenced": 3,
+      "numberOfTimesCopied": 13,
+      "likes": 0,
+      "publishedVersionId": null,
+      "notes": null,
+      "notRevisionManaged": false,
+      "forceExportRules": false,
+      "createdWithEducationPlan": false,
+      "anonymousAccessAllowed": true,
+      "anonymousAllowsExport": false,
+      "trashedAt": null,
+      "isOrphaned": false,
+      "hasReleaseRevisionableObjects": false,
+      "owner": {
+        "type": 0,
+        "isEnterpriseOwnedResource": false,
+        "image": "/images/placeholder-user.png",
+        "name": "lorenz nepomuceno",
+        "id": "643129b6e762bb20068ca715",
+        "href": "https://cad.onshape.com/api/v12/users/643129b6e762bb20068ca715"
+      },
+      "connectionName": "",
+      "isMutable": false,
+      "isContainer": false,
+      "canMove": false,
+      "unparentHref": "https://cad.onshape.com/api/globaltreenodes/document/7412667ae1ac433ccceb9769/parentInfo",
+      "connectionNames": null,
+      "isExternalConnectionResource": false,
+      "description": null,
+      "modifiedAt": "2023-04-14T11:58:49.685+00:00",
+      "createdAt": "2023-04-08T11:53:15.481+00:00",
+      "createdBy": {
+        "jsonType": "user-summary",
+        "state": 1,
+        "isOnshapeSupport": false,
+        "image": "/images/placeholder-user.png",
+        "name": "lorenz nepomuceno",
+        "id": "643129b6e762bb20068ca715",
+        "href": "https://cad.onshape.com/api/v12/users/643129b6e762bb20068ca715"
+      },
+      "modifiedBy": {
+        "jsonType": "user-summary",
+        "state": 1,
+        "isOnshapeSupport": false,
+        "image": "/images/placeholder-user.png",
+        "name": "lorenz nepomuceno",
+        "id": "643129b6e762bb20068ca715",
+        "href": "https://cad.onshape.com/api/v12/users/643129b6e762bb20068ca715"
+      },
+      "isEnterpriseOwned": false,
+      "resourceType": "document",
+      "name": "Virtual Model",
+      "id": "7412667ae1ac433ccceb9769",
+      "href": "https://cad.onshape.com/api/documents"
+    },
+    {
+      "jsonType": "document-summary-search",
+      "searchHits": [
+        {
+          "versionOrWorkspaceName": "Main",
+          "state": "IN_PROGRESS",
+          "type": "part",
+          "revDate": null,
+          "revision": null,
+          "partNumber": null,
+          "partId": "JYD",
+          "bodyType": "SOLID",
+          "elementId": "ef3ac6f2f46cd0c981c9158b",
+          "versionOrWorkspace": "w",
+          "versionOrWorkspaceId": "11be0b9985137b3999ab3461",
+          "configurationId": null,
+          "isLatestRev": null,
+          "publications": [],
+          "publicationReaders": [],
+          "documentId": "b19b5298879fcbcc5c651701",
+          "name": "DC Motor 6v",
+          "projectId": null,
+          "folderId": null,
+          "sourceMap": {
+            "elementid": "ef3ac6f2f46cd0c981c9158b",
+            "modifiedAt": 1680970215109,
+            "pid": "JYD",
+            "dt": "PART",
+            "createdAt": 1680970212188,
+            "isAtPublishedFSVersion": false,
+            "bodytype": "SOLID",
+            "namesat": "DC Motor 6v",
+            "name": "DC Motor 6v",
+            "state": "IN_PROGRESS",
+            "join": {
+              "parent": "b19b5298879fcbcc5c651701",
+              "name": "part"
+            },
+            "id": "643191e7fd0a232eb418cc51",
+            "category": [
+              "5877a03ebe4c21163b49dce2"
+            ],
+            "elementType": "PARTSTUDIO",
+            "workspaceid": "11be0b9985137b3999ab3461"
+          },
+          "hitId": "643191e7fd0a232eb418cc51",
+          "highlightedFields": {
+            "name": [
+              "<os-highlight>DC</os-highlight> <os-highlight>Motor</os-highlight> <os-highlight>6v</os-highlight>"
+            ]
+          },
+          "elementName": "DC Motor",
+          "meshState": 0
+        }
+      ],
+      "public": true,
+      "permission": "READ_COPY_EXPORT",
+      "defaultElementId": null,
+      "recentVersion": null,
+      "hasRelevantInsertables": false,
+      "canUnshare": false,
+      "userAccountLimitsBreached": false,
+      "supportTeamUserAndShared": false,
+      "isUsingManagedWorkflow": false,
+      "likedByCurrentUser": false,
+      "defaultVersionGraphMode": "ALL_BRANCHES",
+      "defaultVersionGraphShowMerges": true,
+      "defaultVersionGraphShowAutoVersions": true,
+      "sequence": null,
+      "tags": [],
+      "documentType": 0,
+      "thumbnail": {
+        "sizes": [
+          {
+            "size": "600x340",
+            "href": "https://cad.onshape.com/api/thumbnails/d/b19b5298879fcbcc5c651701/w/11be0b9985137b3999ab3461/s/600x340?t=1680970268292",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "300x300",
+            "href": "https://cad.onshape.com/api/thumbnails/d/b19b5298879fcbcc5c651701/w/11be0b9985137b3999ab3461/s/300x300?t=1680970268292",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "300x170",
+            "href": "https://cad.onshape.com/api/thumbnails/d/b19b5298879fcbcc5c651701/w/11be0b9985137b3999ab3461/s/300x170?t=1680970268292",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "70x40",
+            "href": "https://cad.onshape.com/api/thumbnails/d/b19b5298879fcbcc5c651701/w/11be0b9985137b3999ab3461/s/70x40?t=1680970268292",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          }
+        ],
+        "secondarySizes": null,
+        "id": null,
+        "href": "https://cad.onshape.com/api/thumbnails/d/b19b5298879fcbcc5c651701/w/11be0b9985137b3999ab3461?t=1680970268292"
+      },
+      "parentId": null,
+      "projectId": null,
+      "defaultWorkspace": {
+        "state": null,
+        "canDelete": true,
+        "protectionRule": "OPEN",
+        "isReadOnly": false,
+        "parent": null,
+        "type": null,
+        "creator": null,
+        "lastModifier": null,
+        "description": null,
+        "modifiedAt": null,
+        "thumbnail": null,
+        "documentId": null,
+        "createdAt": null,
+        "microversion": null,
+        "parents": null,
+        "overrideDate": null,
+        "name": "Main",
+        "id": "11be0b9985137b3999ab3461",
+        "href": "https://cad.onshape.com/api/v12/documents/d/b19b5298879fcbcc5c651701/workspaces/11be0b9985137b3999ab3461"
+      },
+      "permissionSet": [
+        "LINK",
+        "READ",
+        "EXPORT",
+        "COPY"
+      ],
+      "trash": false,
+      "totalWorkspacesUpdating": 0,
+      "totalWorkspacesScheduledForUpdate": 0,
+      "documentLabels": null,
+      "numberOfTimesReferenced": 0,
+      "numberOfTimesCopied": 0,
+      "likes": 0,
+      "publishedVersionId": null,
+      "notes": null,
+      "notRevisionManaged": false,
+      "forceExportRules": false,
+      "createdWithEducationPlan": false,
+      "anonymousAccessAllowed": false,
+      "anonymousAllowsExport": false,
+      "trashedAt": null,
+      "isOrphaned": false,
+      "hasReleaseRevisionableObjects": false,
+      "owner": {
+        "type": 0,
+        "isEnterpriseOwnedResource": false,
+        "image": "/images/placeholder-user.png",
+        "name": "lorenz nepomuceno",
+        "id": "643129b6e762bb20068ca715",
+        "href": "https://cad.onshape.com/api/v12/users/643129b6e762bb20068ca715"
+      },
+      "connectionName": "",
+      "isMutable": false,
+      "isContainer": false,
+      "canMove": false,
+      "unparentHref": "https://cad.onshape.com/api/globaltreenodes/document/b19b5298879fcbcc5c651701/parentInfo",
+      "connectionNames": null,
+      "isExternalConnectionResource": false,
+      "description": null,
+      "modifiedAt": "2023-04-08T16:10:34.714+00:00",
+      "createdAt": "2023-04-08T16:10:09.063+00:00",
+      "createdBy": {
+        "jsonType": "user-summary",
+        "state": 1,
+        "isOnshapeSupport": false,
+        "image": "/images/placeholder-user.png",
+        "name": "lorenz nepomuceno",
+        "id": "643129b6e762bb20068ca715",
+        "href": "https://cad.onshape.com/api/v12/users/643129b6e762bb20068ca715"
+      },
+      "modifiedBy": {
+        "jsonType": "user-summary",
+        "state": 1,
+        "isOnshapeSupport": false,
+        "image": "/images/placeholder-user.png",
+        "name": "lorenz nepomuceno",
+        "id": "643129b6e762bb20068ca715",
+        "href": "https://cad.onshape.com/api/v12/users/643129b6e762bb20068ca715"
+      },
+      "isEnterpriseOwned": false,
+      "resourceType": "document",
+      "name": "motor sm",
+      "id": "b19b5298879fcbcc5c651701",
+      "href": "https://cad.onshape.com/api/documents"
+    },
+    {
+      "jsonType": "document-summary-search",
+      "searchHits": [
+        {
+          "versionOrWorkspaceName": "Main",
+          "state": "IN_PROGRESS",
+          "type": "part",
+          "revDate": null,
+          "revision": null,
+          "partNumber": null,
+          "partId": "JHD",
+          "bodyType": "SOLID",
+          "elementId": "0a9434cb2048ae358d26cbd2",
+          "versionOrWorkspace": "w",
+          "versionOrWorkspaceId": "f959956478eaa36ec92fad9a",
+          "configurationId": null,
+          "isLatestRev": null,
+          "publications": [],
+          "publicationReaders": [],
+          "documentId": "d017e576c24fdc3b49e037db",
+          "name": "dc motor 6V",
+          "projectId": null,
+          "folderId": null,
+          "sourceMap": {
+            "elementid": "0a9434cb2048ae358d26cbd2",
+            "modifiedAt": 1680171945672,
+            "pid": "JHD",
+            "dt": "PART",
+            "createdAt": 1680171942691,
+            "isAtPublishedFSVersion": false,
+            "bodytype": "SOLID",
+            "namesat": "dc motor 6V",
+            "name": "dc motor 6V",
+            "state": "IN_PROGRESS",
+            "join": {
+              "parent": "d017e576c24fdc3b49e037db",
+              "name": "part"
+            },
+            "id": "642563a94a88e0181e3e1e33",
+            "category": [
+              "5877a03ebe4c21163b49dce2"
+            ],
+            "elementType": "PARTSTUDIO",
+            "workspaceid": "f959956478eaa36ec92fad9a"
+          },
+          "hitId": "642563a94a88e0181e3e1e33",
+          "highlightedFields": {
+            "name": [
+              "<os-highlight>dc</os-highlight> <os-highlight>motor</os-highlight> <os-highlight>6V</os-highlight>"
+            ]
+          },
+          "elementName": "base_abajo_y_llantas",
+          "meshState": 0
+        },
+        {
+          "versionOrWorkspaceName": "Main",
+          "state": "IN_PROGRESS",
+          "type": "part",
+          "revDate": null,
+          "revision": null,
+          "partNumber": null,
+          "partId": "JHD",
+          "bodyType": "SOLID",
+          "elementId": "b947d4ef07bd827f037735fc",
+          "versionOrWorkspace": "w",
+          "versionOrWorkspaceId": "f959956478eaa36ec92fad9a",
+          "configurationId": null,
+          "isLatestRev": null,
+          "publications": [],
+          "publicationReaders": [],
+          "documentId": "d017e576c24fdc3b49e037db",
+          "name": "dc motor 6V",
+          "projectId": null,
+          "folderId": null,
+          "sourceMap": {
+            "elementid": "b947d4ef07bd827f037735fc",
+            "modifiedAt": 1680171947107,
+            "pid": "JHD",
+            "dt": "PART",
+            "createdAt": 1680171942691,
+            "isAtPublishedFSVersion": false,
+            "bodytype": "SOLID",
+            "namesat": "dc motor 6V",
+            "name": "dc motor 6V",
+            "state": "IN_PROGRESS",
+            "join": {
+              "parent": "d017e576c24fdc3b49e037db",
+              "name": "part"
+            },
+            "id": "642563ab4a88e0181e3e1e59",
+            "category": [
+              "5877a03ebe4c21163b49dce2"
+            ],
+            "elementType": "PARTSTUDIO",
+            "workspaceid": "f959956478eaa36ec92fad9a"
+          },
+          "hitId": "642563ab4a88e0181e3e1e59",
+          "highlightedFields": {
+            "name": [
+              "<os-highlight>dc</os-highlight> <os-highlight>motor</os-highlight> <os-highlight>6V</os-highlight>"
+            ]
+          },
+          "elementName": "Part Studio 1 Copy 1",
+          "meshState": 0
+        }
+      ],
+      "public": true,
+      "permission": "READ_COPY_EXPORT",
+      "defaultElementId": null,
+      "recentVersion": null,
+      "hasRelevantInsertables": false,
+      "canUnshare": false,
+      "userAccountLimitsBreached": false,
+      "supportTeamUserAndShared": false,
+      "isUsingManagedWorkflow": false,
+      "likedByCurrentUser": false,
+      "defaultVersionGraphMode": "ALL_BRANCHES",
+      "defaultVersionGraphShowMerges": true,
+      "defaultVersionGraphShowAutoVersions": true,
+      "sequence": null,
+      "tags": [],
+      "documentType": 0,
+      "thumbnail": {
+        "sizes": [
+          {
+            "size": "600x340",
+            "href": "https://cad.onshape.com/api/thumbnails/d/d017e576c24fdc3b49e037db/w/f959956478eaa36ec92fad9a/s/600x340?t=1683876603244",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "70x40",
+            "href": "https://cad.onshape.com/api/thumbnails/d/d017e576c24fdc3b49e037db/w/f959956478eaa36ec92fad9a/s/70x40?t=1683876603244",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "300x300",
+            "href": "https://cad.onshape.com/api/thumbnails/d/d017e576c24fdc3b49e037db/w/f959956478eaa36ec92fad9a/s/300x300?t=1683876603244",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "300x170",
+            "href": "https://cad.onshape.com/api/thumbnails/d/d017e576c24fdc3b49e037db/w/f959956478eaa36ec92fad9a/s/300x170?t=1683876603244",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          }
+        ],
+        "secondarySizes": null,
+        "id": null,
+        "href": "https://cad.onshape.com/api/thumbnails/d/d017e576c24fdc3b49e037db/w/f959956478eaa36ec92fad9a?t=1683876603244"
+      },
+      "parentId": null,
+      "projectId": null,
+      "defaultWorkspace": {
+        "state": null,
+        "canDelete": true,
+        "protectionRule": "OPEN",
+        "isReadOnly": false,
+        "parent": null,
+        "type": null,
+        "creator": null,
+        "lastModifier": null,
+        "description": null,
+        "modifiedAt": null,
+        "thumbnail": null,
+        "documentId": null,
+        "createdAt": null,
+        "microversion": null,
+        "parents": null,
+        "overrideDate": null,
+        "name": "Main",
+        "id": "f959956478eaa36ec92fad9a",
+        "href": "https://cad.onshape.com/api/v12/documents/d/d017e576c24fdc3b49e037db/workspaces/f959956478eaa36ec92fad9a"
+      },
+      "permissionSet": [
+        "LINK",
+        "READ",
+        "EXPORT",
+        "COPY"
+      ],
+      "trash": false,
+      "totalWorkspacesUpdating": 0,
+      "totalWorkspacesScheduledForUpdate": 0,
+      "documentLabels": null,
+      "numberOfTimesReferenced": 0,
+      "numberOfTimesCopied": 0,
+      "likes": 0,
+      "publishedVersionId": null,
+      "notes": null,
+      "notRevisionManaged": false,
+      "forceExportRules": false,
+      "createdWithEducationPlan": false,
+      "anonymousAccessAllowed": false,
+      "anonymousAllowsExport": false,
+      "trashedAt": null,
+      "isOrphaned": false,
+      "hasReleaseRevisionableObjects": false,
+      "owner": {
+        "type": 0,
+        "isEnterpriseOwnedResource": false,
+        "image": "/images/placeholder-user.png",
+        "name": "Jerry Oyelade",
+        "id": "5d80a5e38ae82f15a51521d5",
+        "href": "https://cad.onshape.com/api/v12/users/5d80a5e38ae82f15a51521d5"
+      },
+      "connectionName": "",
+      "isMutable": false,
+      "isContainer": false,
+      "canMove": false,
+      "unparentHref": "https://cad.onshape.com/api/globaltreenodes/document/d017e576c24fdc3b49e037db/parentInfo",
+      "connectionNames": null,
+      "isExternalConnectionResource": false,
+      "description": null,
+      "modifiedAt": "2023-04-10T14:13:33.232+00:00",
+      "createdAt": "2023-03-30T10:25:40.444+00:00",
+      "createdBy": {
+        "jsonType": "user-summary",
+        "state": 1,
+        "isOnshapeSupport": false,
+        "image": "/images/placeholder-user.png",
+        "name": "Jerry Oyelade",
+        "id": "5d80a5e38ae82f15a51521d5",
+        "href": "https://cad.onshape.com/api/v12/users/5d80a5e38ae82f15a51521d5"
+      },
+      "modifiedBy": {
+        "jsonType": "user-summary",
+        "state": 1,
+        "isOnshapeSupport": false,
+        "image": "/images/placeholder-user.png",
+        "name": "Jerry Oyelade",
+        "id": "5d80a5e38ae82f15a51521d5",
+        "href": "https://cad.onshape.com/api/v12/users/5d80a5e38ae82f15a51521d5"
+      },
+      "isEnterpriseOwned": false,
+      "resourceType": "document",
+      "name": "eg4013 robot",
+      "id": "d017e576c24fdc3b49e037db",
+      "href": "https://cad.onshape.com/api/documents"
+    },
+    {
+      "jsonType": "document-summary-search",
+      "searchHits": [
+        {
+          "versionOrWorkspaceName": "Main",
+          "state": "IN_PROGRESS",
+          "type": "part",
+          "revDate": null,
+          "revision": null,
+          "partNumber": null,
+          "partId": "JYD",
+          "bodyType": "SOLID",
+          "elementId": "4498a62274941f4ee7139b71",
+          "versionOrWorkspace": "w",
+          "versionOrWorkspaceId": "caa1fff9d25ef11c99ebd408",
+          "configurationId": null,
+          "isLatestRev": null,
+          "publications": [],
+          "publicationReaders": [],
+          "documentId": "3df480a6f4ed42f07f76db76",
+          "name": "DC Motor 6v",
+          "projectId": null,
+          "folderId": null,
+          "sourceMap": {
+            "elementid": "4498a62274941f4ee7139b71",
+            "modifiedAt": 1706626690711,
+            "pid": "JYD",
+            "dt": "PART",
+            "createdAt": 1706626684732,
+            "isAtPublishedFSVersion": false,
+            "bodytype": "SOLID",
+            "namesat": "DC Motor 6v",
+            "name": "DC Motor 6v",
+            "state": "IN_PROGRESS",
+            "join": {
+              "parent": "3df480a6f4ed42f07f76db76",
+              "name": "part"
+            },
+            "id": "65b90e82fc66723b905e3acd",
+            "category": [
+              "5877a03ebe4c21163b49dce2"
+            ],
+            "elementType": "PARTSTUDIO",
+            "workspaceid": "caa1fff9d25ef11c99ebd408"
+          },
+          "hitId": "65b90e82fc66723b905e3acd",
+          "highlightedFields": {
+            "name": [
+              "<os-highlight>DC</os-highlight> <os-highlight>Motor</os-highlight> <os-highlight>6v</os-highlight>"
+            ]
+          },
+          "elementName": "DC Motor",
+          "meshState": 0
+        }
+      ],
+      "public": true,
+      "permission": "READ_COPY_EXPORT",
+      "defaultElementId": null,
+      "recentVersion": null,
+      "hasRelevantInsertables": false,
+      "canUnshare": false,
+      "userAccountLimitsBreached": false,
+      "supportTeamUserAndShared": false,
+      "isUsingManagedWorkflow": false,
+      "likedByCurrentUser": false,
+      "defaultVersionGraphMode": "ALL_BRANCHES",
+      "defaultVersionGraphShowMerges": true,
+      "defaultVersionGraphShowAutoVersions": true,
+      "sequence": null,
+      "tags": [],
+      "documentType": 0,
+      "thumbnail": {
+        "sizes": [
+          {
+            "size": "300x300",
+            "href": "https://cad.onshape.com/api/thumbnails/d/3df480a6f4ed42f07f76db76/w/caa1fff9d25ef11c99ebd408/s/300x300?t=1706626721420",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "300x170",
+            "href": "https://cad.onshape.com/api/thumbnails/d/3df480a6f4ed42f07f76db76/w/caa1fff9d25ef11c99ebd408/s/300x170?t=1706626721420",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "70x40",
+            "href": "https://cad.onshape.com/api/thumbnails/d/3df480a6f4ed42f07f76db76/w/caa1fff9d25ef11c99ebd408/s/70x40?t=1706626721420",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "600x340",
+            "href": "https://cad.onshape.com/api/thumbnails/d/3df480a6f4ed42f07f76db76/w/caa1fff9d25ef11c99ebd408/s/600x340?t=1706626721420",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          }
+        ],
+        "secondarySizes": null,
+        "id": null,
+        "href": "https://cad.onshape.com/api/thumbnails/d/3df480a6f4ed42f07f76db76/w/caa1fff9d25ef11c99ebd408?t=1706626721420"
+      },
+      "parentId": null,
+      "projectId": null,
+      "defaultWorkspace": {
+        "state": null,
+        "canDelete": true,
+        "protectionRule": "OPEN",
+        "isReadOnly": false,
+        "parent": null,
+        "type": null,
+        "creator": null,
+        "lastModifier": null,
+        "description": null,
+        "modifiedAt": null,
+        "thumbnail": null,
+        "documentId": null,
+        "createdAt": null,
+        "microversion": null,
+        "parents": null,
+        "overrideDate": null,
+        "name": "Main",
+        "id": "caa1fff9d25ef11c99ebd408",
+        "href": "https://cad.onshape.com/api/v12/documents/d/3df480a6f4ed42f07f76db76/workspaces/caa1fff9d25ef11c99ebd408"
+      },
+      "permissionSet": [
+        "LINK",
+        "READ",
+        "EXPORT",
+        "COPY"
+      ],
+      "trash": false,
+      "totalWorkspacesUpdating": 0,
+      "totalWorkspacesScheduledForUpdate": 0,
+      "documentLabels": null,
+      "numberOfTimesReferenced": 2,
+      "numberOfTimesCopied": 0,
+      "likes": 0,
+      "publishedVersionId": null,
+      "notes": null,
+      "notRevisionManaged": false,
+      "forceExportRules": false,
+      "createdWithEducationPlan": false,
+      "anonymousAccessAllowed": false,
+      "anonymousAllowsExport": false,
+      "trashedAt": null,
+      "isOrphaned": false,
+      "hasReleaseRevisionableObjects": false,
+      "owner": {
+        "type": 0,
+        "isEnterpriseOwnedResource": false,
+        "image": "/images/placeholder-user.png",
+        "name": "christopher samson",
+        "id": "6192afec3e0fbd75dcd14f80",
+        "href": "https://cad.onshape.com/api/v12/users/6192afec3e0fbd75dcd14f80"
+      },
+      "connectionName": "",
+      "isMutable": false,
+      "isContainer": false,
+      "canMove": false,
+      "unparentHref": "https://cad.onshape.com/api/globaltreenodes/document/3df480a6f4ed42f07f76db76/parentInfo",
+      "connectionNames": null,
+      "isExternalConnectionResource": false,
+      "description": null,
+      "modifiedAt": "2024-01-30T14:58:04.060+00:00",
+      "createdAt": "2024-01-30T14:58:04.060+00:00",
+      "createdBy": {
+        "jsonType": "user-summary",
+        "state": 1,
+        "isOnshapeSupport": false,
+        "image": "/images/placeholder-user.png",
+        "name": "christopher samson",
+        "id": "6192afec3e0fbd75dcd14f80",
+        "href": "https://cad.onshape.com/api/v12/users/6192afec3e0fbd75dcd14f80"
+      },
+      "modifiedBy": {
+        "jsonType": "user-summary",
+        "state": 1,
+        "isOnshapeSupport": false,
+        "image": "/images/placeholder-user.png",
+        "name": "christopher samson",
+        "id": "6192afec3e0fbd75dcd14f80",
+        "href": "https://cad.onshape.com/api/v12/users/6192afec3e0fbd75dcd14f80"
+      },
+      "isEnterpriseOwned": false,
+      "resourceType": "document",
+      "name": "dc motor - Copy",
+      "id": "3df480a6f4ed42f07f76db76",
+      "href": "https://cad.onshape.com/api/documents"
+    },
+    {
+      "jsonType": "document-summary-search",
+      "searchHits": [
+        {
+          "versionOrWorkspaceName": "V3",
+          "state": "IN_PROGRESS",
+          "type": "part",
+          "revDate": null,
+          "revision": null,
+          "partNumber": null,
+          "partId": "JTD",
+          "bodyType": "SOLID",
+          "elementId": "99f0ccbd0a9ba290114ed34d",
+          "versionOrWorkspace": "v",
+          "versionOrWorkspaceId": "89209afbed8190d625aa8465",
+          "configurationId": null,
+          "isLatestRev": null,
+          "publications": [],
+          "publicationReaders": [],
+          "documentId": "edcd4c9ac732a799d1b7d202",
+          "name": "DC Motor 6v",
+          "projectId": null,
+          "folderId": null,
+          "sourceMap": {
+            "elementid": "99f0ccbd0a9ba290114ed34d",
+            "isRecentVersion": true,
+            "modifiedAt": 1724346988857,
+            "pid": "JTD",
+            "dt": "PART",
+            "createdAt": 1724346988008,
+            "isAtPublishedFSVersion": false,
+            "versionid": "89209afbed8190d625aa8465",
+            "bodytype": "SOLID",
+            "namesat": "DC Motor 6v",
+            "name": "DC Motor 6v",
+            "state": "IN_PROGRESS",
+            "join": {
+              "parent": "edcd4c9ac732a799d1b7d202",
+              "name": "part"
+            },
+            "id": "66c7726cf9aae83030798b47",
+            "category": [
+              "5877a03ebe4c21163b49dce2"
+            ],
+            "elementType": "PARTSTUDIO"
+          },
+          "hitId": "66c7726cf9aae83030798b47",
+          "highlightedFields": {
+            "name": [
+              "<os-highlight>DC</os-highlight> <os-highlight>Motor</os-highlight> <os-highlight>6v</os-highlight>"
+            ]
+          },
+          "elementName": "Driver Cabin",
+          "meshState": 0
+        },
+        {
+          "versionOrWorkspaceName": "Experimenting with Workpiece Range of Motion",
+          "state": "IN_PROGRESS",
+          "type": "part",
+          "revDate": null,
+          "revision": null,
+          "partNumber": null,
+          "partId": "JTD",
+          "bodyType": "SOLID",
+          "elementId": "99f0ccbd0a9ba290114ed34d",
+          "versionOrWorkspace": "w",
+          "versionOrWorkspaceId": "a244a4c0e6f436deebb9df29",
+          "configurationId": null,
+          "isLatestRev": null,
+          "publications": [],
+          "publicationReaders": [],
+          "documentId": "edcd4c9ac732a799d1b7d202",
+          "name": "DC Motor 6v",
+          "projectId": null,
+          "folderId": null,
+          "sourceMap": {
+            "elementid": "99f0ccbd0a9ba290114ed34d",
+            "modifiedAt": 1724347022276,
+            "pid": "JTD",
+            "dt": "PART",
+            "createdAt": 1724346966246,
+            "isAtPublishedFSVersion": false,
+            "bodytype": "SOLID",
+            "namesat": "DC Motor 6v",
+            "name": "DC Motor 6v",
+            "state": "IN_PROGRESS",
+            "join": {
+              "parent": "edcd4c9ac732a799d1b7d202",
+              "name": "part"
+            },
+            "id": "66c7728ef9aae83030798bd3",
+            "category": [
+              "5877a03ebe4c21163b49dce2"
+            ],
+            "elementType": "PARTSTUDIO",
+            "workspaceid": "a244a4c0e6f436deebb9df29"
+          },
+          "hitId": "66c7728ef9aae83030798bd3",
+          "highlightedFields": {
+            "name": [
+              "<os-highlight>DC</os-highlight> <os-highlight>Motor</os-highlight> <os-highlight>6v</os-highlight>"
+            ]
+          },
+          "elementName": "Driver Cabin",
+          "meshState": 0
+        },
+        {
+          "versionOrWorkspaceName": "Workpiece Initial Design",
+          "state": "IN_PROGRESS",
+          "type": "part",
+          "revDate": null,
+          "revision": null,
+          "partNumber": null,
+          "partId": "JTD",
+          "bodyType": "SOLID",
+          "elementId": "99f0ccbd0a9ba290114ed34d",
+          "versionOrWorkspace": "v",
+          "versionOrWorkspaceId": "186800d2532b7b4d7a5534f4",
+          "configurationId": null,
+          "isLatestRev": null,
+          "publications": [],
+          "publicationReaders": [],
+          "documentId": "edcd4c9ac732a799d1b7d202",
+          "name": "DC Motor 6v",
+          "projectId": null,
+          "folderId": null,
+          "sourceMap": {
+            "elementid": "99f0ccbd0a9ba290114ed34d",
+            "isRecentVersion": false,
+            "modifiedAt": 1724346967299,
+            "pid": "JTD",
+            "dt": "PART",
+            "createdAt": 1724346966246,
+            "isAtPublishedFSVersion": false,
+            "versionid": "186800d2532b7b4d7a5534f4",
+            "bodytype": "SOLID",
+            "namesat": "DC Motor 6v",
+            "name": "DC Motor 6v",
+            "state": "IN_PROGRESS",
+            "join": {
+              "parent": "edcd4c9ac732a799d1b7d202",
+              "name": "part"
+            },
+            "id": "66c77257f9aae83030798acf",
+            "category": [
+              "5877a03ebe4c21163b49dce2"
+            ],
+            "elementType": "PARTSTUDIO"
+          },
+          "hitId": "66c77257f9aae83030798acf",
+          "highlightedFields": {
+            "name": [
+              "<os-highlight>DC</os-highlight> <os-highlight>Motor</os-highlight> <os-highlight>6v</os-highlight>"
+            ]
+          },
+          "elementName": "Driver Cabin",
+          "meshState": 0
+        },
+        {
+          "versionOrWorkspaceName": "Main",
+          "state": "IN_PROGRESS",
+          "type": "part",
+          "revDate": null,
+          "revision": null,
+          "partNumber": null,
+          "partId": "JTD",
+          "bodyType": "SOLID",
+          "elementId": "99f0ccbd0a9ba290114ed34d",
+          "versionOrWorkspace": "w",
+          "versionOrWorkspaceId": "e87420b595a42b514eb4459f",
+          "configurationId": null,
+          "isLatestRev": null,
+          "publications": [],
+          "publicationReaders": [],
+          "documentId": "edcd4c9ac732a799d1b7d202",
+          "name": "DC Motor 6v",
+          "projectId": null,
+          "folderId": null,
+          "sourceMap": {
+            "elementid": "99f0ccbd0a9ba290114ed34d",
+            "modifiedAt": 1724261473258,
+            "pid": "JTD",
+            "dt": "PART",
+            "createdAt": 1724244041543,
+            "isAtPublishedFSVersion": false,
+            "bodytype": "SOLID",
+            "namesat": "DC Motor 6v",
+            "name": "DC Motor 6v",
+            "state": "IN_PROGRESS",
+            "join": {
+              "parent": "edcd4c9ac732a799d1b7d202",
+              "name": "part"
+            },
+            "id": "66c614564a958e0d085c935e",
+            "category": [
+              "5877a03ebe4c21163b49dce2"
+            ],
+            "elementType": "PARTSTUDIO",
+            "workspaceid": "e87420b595a42b514eb4459f"
+          },
+          "hitId": "66c614564a958e0d085c935e",
+          "highlightedFields": {
+            "name": [
+              "<os-highlight>DC</os-highlight> <os-highlight>Motor</os-highlight> <os-highlight>6v</os-highlight>"
+            ]
+          },
+          "elementName": "Driver Cabin",
+          "meshState": 0
+        },
+        {
+          "versionOrWorkspaceName": "Slip Ring added",
+          "state": "IN_PROGRESS",
+          "type": "part",
+          "revDate": null,
+          "revision": null,
+          "partNumber": null,
+          "partId": "JTD",
+          "bodyType": "SOLID",
+          "elementId": "99f0ccbd0a9ba290114ed34d",
+          "versionOrWorkspace": "w",
+          "versionOrWorkspaceId": "3b88158f2a64f942b87d63df",
+          "configurationId": null,
+          "isLatestRev": null,
+          "publications": [],
+          "publicationReaders": [],
+          "documentId": "edcd4c9ac732a799d1b7d202",
+          "name": "DC Motor 6v",
+          "projectId": null,
+          "folderId": null,
+          "sourceMap": {
+            "elementid": "99f0ccbd0a9ba290114ed34d",
+            "modifiedAt": 1724940562751,
+            "pid": "JTD",
+            "dt": "PART",
+            "createdAt": 1724346988008,
+            "isAtPublishedFSVersion": false,
+            "bodytype": "SOLID",
+            "namesat": "DC Motor 6v",
+            "name": "DC Motor 6v",
+            "state": "IN_PROGRESS",
+            "join": {
+              "parent": "edcd4c9ac732a799d1b7d202",
+              "name": "part"
+            },
+            "id": "66d081122c762a30676aa44d",
+            "category": [
+              "5877a03ebe4c21163b49dce2"
+            ],
+            "elementType": "PARTSTUDIO",
+            "workspaceid": "3b88158f2a64f942b87d63df"
+          },
+          "hitId": "66d081122c762a30676aa44d",
+          "highlightedFields": {
+            "name": [
+              "<os-highlight>DC</os-highlight> <os-highlight>Motor</os-highlight> <os-highlight>6v</os-highlight>"
+            ]
+          },
+          "elementName": "Driver Cabin",
+          "meshState": 0
+        }
+      ],
+      "public": true,
+      "permission": "READ_COPY_EXPORT",
+      "defaultElementId": null,
+      "recentVersion": null,
+      "hasRelevantInsertables": false,
+      "canUnshare": false,
+      "userAccountLimitsBreached": false,
+      "supportTeamUserAndShared": false,
+      "isUsingManagedWorkflow": false,
+      "likedByCurrentUser": false,
+      "defaultVersionGraphMode": "ALL_BRANCHES",
+      "defaultVersionGraphShowMerges": true,
+      "defaultVersionGraphShowAutoVersions": true,
+      "sequence": null,
+      "tags": [],
+      "documentType": 0,
+      "thumbnail": {
+        "sizes": [
+          {
+            "size": "300x300",
+            "href": "https://cad.onshape.com/api/thumbnails/d/edcd4c9ac732a799d1b7d202/w/e87420b595a42b514eb4459f/s/300x300?t=1724346979906",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "600x340",
+            "href": "https://cad.onshape.com/api/thumbnails/d/edcd4c9ac732a799d1b7d202/w/e87420b595a42b514eb4459f/s/600x340?t=1724346979906",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "300x170",
+            "href": "https://cad.onshape.com/api/thumbnails/d/edcd4c9ac732a799d1b7d202/w/e87420b595a42b514eb4459f/s/300x170?t=1724346979906",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "70x40",
+            "href": "https://cad.onshape.com/api/thumbnails/d/edcd4c9ac732a799d1b7d202/w/e87420b595a42b514eb4459f/s/70x40?t=1724346979906",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          }
+        ],
+        "secondarySizes": null,
+        "id": null,
+        "href": "https://cad.onshape.com/api/thumbnails/d/edcd4c9ac732a799d1b7d202/w/e87420b595a42b514eb4459f?t=1724346979906"
+      },
+      "parentId": "2723eb924f16eaed7b8658cb",
+      "projectId": null,
+      "defaultWorkspace": {
+        "state": null,
+        "canDelete": true,
+        "protectionRule": "OPEN",
+        "isReadOnly": false,
+        "parent": null,
+        "type": null,
+        "creator": null,
+        "lastModifier": null,
+        "description": null,
+        "modifiedAt": null,
+        "thumbnail": null,
+        "documentId": null,
+        "createdAt": null,
+        "microversion": null,
+        "parents": null,
+        "overrideDate": null,
+        "name": "Main",
+        "id": "e87420b595a42b514eb4459f",
+        "href": "https://cad.onshape.com/api/v12/documents/d/edcd4c9ac732a799d1b7d202/workspaces/e87420b595a42b514eb4459f"
+      },
+      "permissionSet": [
+        "LINK",
+        "READ",
+        "EXPORT",
+        "COPY"
+      ],
+      "trash": false,
+      "totalWorkspacesUpdating": 0,
+      "totalWorkspacesScheduledForUpdate": 0,
+      "documentLabels": null,
+      "numberOfTimesReferenced": 1,
+      "numberOfTimesCopied": 0,
+      "likes": 0,
+      "publishedVersionId": null,
+      "notes": null,
+      "notRevisionManaged": false,
+      "forceExportRules": false,
+      "createdWithEducationPlan": false,
+      "anonymousAccessAllowed": false,
+      "anonymousAllowsExport": false,
+      "trashedAt": null,
+      "isOrphaned": false,
+      "hasReleaseRevisionableObjects": false,
+      "owner": {
+        "type": 0,
+        "isEnterpriseOwnedResource": false,
+        "image": "/images/placeholder-user.png",
+        "name": "Adam Kimak",
+        "id": "66a0fd3379427611c78bdbf0",
+        "href": "https://cad.onshape.com/api/v12/users/66a0fd3379427611c78bdbf0"
+      },
+      "connectionName": "",
+      "isMutable": false,
+      "isContainer": false,
+      "canMove": false,
+      "unparentHref": "https://cad.onshape.com/api/globaltreenodes/document/edcd4c9ac732a799d1b7d202/parentInfo",
+      "connectionNames": null,
+      "isExternalConnectionResource": false,
+      "description": null,
+      "modifiedAt": "2024-08-29T14:26:49.275+00:00",
+      "createdAt": "2024-08-21T12:40:39.291+00:00",
+      "createdBy": {
+        "jsonType": "user-summary",
+        "state": 1,
+        "isOnshapeSupport": false,
+        "image": "/images/placeholder-user.png",
+        "name": "Adam Kimak",
+        "id": "66a0fd3379427611c78bdbf0",
+        "href": "https://cad.onshape.com/api/v12/users/66a0fd3379427611c78bdbf0"
+      },
+      "modifiedBy": {
+        "jsonType": "user-summary",
+        "state": 1,
+        "isOnshapeSupport": false,
+        "image": "/images/placeholder-user.png",
+        "name": "Adam Kimak",
+        "id": "66a0fd3379427611c78bdbf0",
+        "href": "https://cad.onshape.com/api/v12/users/66a0fd3379427611c78bdbf0"
+      },
+      "isEnterpriseOwned": false,
+      "resourceType": "document",
+      "name": "Excavator Printed Components",
+      "id": "edcd4c9ac732a799d1b7d202",
+      "href": "https://cad.onshape.com/api/documents"
+    },
+    {
+      "jsonType": "document-summary-search",
+      "searchHits": [
+        {
+          "versionOrWorkspaceName": "Main",
+          "state": "IN_PROGRESS",
+          "type": "part",
+          "revDate": null,
+          "revision": null,
+          "partNumber": null,
+          "partId": "JHD",
+          "bodyType": "SOLID",
+          "elementId": "f1982cc51a10c47de3c7f8ab",
+          "versionOrWorkspace": "w",
+          "versionOrWorkspaceId": "68f19d10ddb2e4138d72a2ac",
+          "configurationId": null,
+          "isLatestRev": null,
+          "publications": [],
+          "publicationReaders": [],
+          "documentId": "549690fbed3237db460cd472",
+          "name": "dc motor 6V",
+          "projectId": null,
+          "folderId": null,
+          "sourceMap": {
+            "elementid": "f1982cc51a10c47de3c7f8ab",
+            "modifiedAt": 1631192831666,
+            "pid": "JHD",
+            "dt": "PART",
+            "createdAt": 1631192526519,
+            "isAtPublishedFSVersion": false,
+            "bodytype": "SOLID",
+            "namesat": "dc motor 6V",
+            "name": "dc motor 6V",
+            "state": "IN_PROGRESS",
+            "join": {
+              "parent": "549690fbed3237db460cd472",
+              "name": "part"
+            },
+            "id": "613a06ff3149f80702205db6",
+            "category": [
+              "5877a03ebe4c21163b49dce2"
+            ],
+            "elementType": "PARTSTUDIO",
+            "workspaceid": "68f19d10ddb2e4138d72a2ac"
+          },
+          "hitId": "613a06ff3149f80702205db6",
+          "highlightedFields": {
+            "name": [
+              "<os-highlight>dc</os-highlight> <os-highlight>motor</os-highlight> <os-highlight>6V</os-highlight>"
+            ]
+          },
+          "elementName": "Part Studio 1",
+          "meshState": 0
+        },
+        {
+          "versionOrWorkspaceName": "V1",
+          "state": "IN_PROGRESS",
+          "type": "part",
+          "revDate": null,
+          "revision": null,
+          "partNumber": null,
+          "partId": "JHD",
+          "bodyType": "SOLID",
+          "elementId": "f1982cc51a10c47de3c7f8ab",
+          "versionOrWorkspace": "v",
+          "versionOrWorkspaceId": "74f6fc304db0c7b7a2420be6",
+          "configurationId": null,
+          "isLatestRev": null,
+          "publications": [],
+          "publicationReaders": [],
+          "documentId": "549690fbed3237db460cd472",
+          "name": "dc motor 6V",
+          "projectId": null,
+          "folderId": null,
+          "sourceMap": {
+            "elementid": "f1982cc51a10c47de3c7f8ab",
+            "isRecentVersion": false,
+            "modifiedAt": 1631510932967,
+            "pid": "JHD",
+            "dt": "PART",
+            "createdAt": 1631510932499,
+            "isAtPublishedFSVersion": false,
+            "versionid": "74f6fc304db0c7b7a2420be6",
+            "bodytype": "SOLID",
+            "namesat": "dc motor 6V",
+            "name": "dc motor 6V",
+            "state": "IN_PROGRESS",
+            "join": {
+              "parent": "549690fbed3237db460cd472",
+              "name": "part"
+            },
+            "id": "613ee1941ee9850168692fa7",
+            "category": [
+              "5877a03ebe4c21163b49dce2"
+            ],
+            "elementType": "PARTSTUDIO"
+          },
+          "hitId": "613ee1941ee9850168692fa7",
+          "highlightedFields": {
+            "name": [
+              "<os-highlight>dc</os-highlight> <os-highlight>motor</os-highlight> <os-highlight>6V</os-highlight>"
+            ]
+          },
+          "elementName": "Part Studio 1",
+          "meshState": 0
+        },
+        {
+          "versionOrWorkspaceName": "V2",
+          "state": "IN_PROGRESS",
+          "type": "part",
+          "revDate": null,
+          "revision": null,
+          "partNumber": null,
+          "partId": "JHD",
+          "bodyType": "SOLID",
+          "elementId": "f1982cc51a10c47de3c7f8ab",
+          "versionOrWorkspace": "v",
+          "versionOrWorkspaceId": "a351b31388898c903ae3a39b",
+          "configurationId": null,
+          "isLatestRev": null,
+          "publications": [],
+          "publicationReaders": [],
+          "documentId": "549690fbed3237db460cd472",
+          "name": "dc motor 6V",
+          "projectId": null,
+          "folderId": null,
+          "sourceMap": {
+            "elementid": "f1982cc51a10c47de3c7f8ab",
+            "isRecentVersion": true,
+            "modifiedAt": 1631543852013,
+            "pid": "JHD",
+            "dt": "PART",
+            "createdAt": 1631543851596,
+            "isAtPublishedFSVersion": false,
+            "versionid": "a351b31388898c903ae3a39b",
+            "bodytype": "SOLID",
+            "namesat": "dc motor 6V",
+            "name": "dc motor 6V",
+            "state": "IN_PROGRESS",
+            "join": {
+              "parent": "549690fbed3237db460cd472",
+              "name": "part"
+            },
+            "id": "613f622c2df271340ae7b96f",
+            "category": [
+              "5877a03ebe4c21163b49dce2"
+            ],
+            "elementType": "PARTSTUDIO"
+          },
+          "hitId": "613f622c2df271340ae7b96f",
+          "highlightedFields": {
+            "name": [
+              "<os-highlight>dc</os-highlight> <os-highlight>motor</os-highlight> <os-highlight>6V</os-highlight>"
+            ]
+          },
+          "elementName": "Part Studio 1",
+          "meshState": 0
+        }
+      ],
+      "public": true,
+      "permission": "READ_COPY_EXPORT",
+      "defaultElementId": null,
+      "recentVersion": null,
+      "hasRelevantInsertables": false,
+      "canUnshare": false,
+      "userAccountLimitsBreached": false,
+      "supportTeamUserAndShared": false,
+      "isUsingManagedWorkflow": false,
+      "likedByCurrentUser": false,
+      "defaultVersionGraphMode": "ALL_BRANCHES",
+      "defaultVersionGraphShowMerges": true,
+      "defaultVersionGraphShowAutoVersions": true,
+      "sequence": null,
+      "tags": [],
+      "documentType": 0,
+      "thumbnail": {
+        "sizes": [
+          {
+            "size": "300x170",
+            "href": "https://cad.onshape.com/api/thumbnails/d/549690fbed3237db460cd472/w/68f19d10ddb2e4138d72a2ac/s/300x170?t=1668117065347",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "300x300",
+            "href": "https://cad.onshape.com/api/thumbnails/d/549690fbed3237db460cd472/w/68f19d10ddb2e4138d72a2ac/s/300x300?t=1668117065347",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "600x340",
+            "href": "https://cad.onshape.com/api/thumbnails/d/549690fbed3237db460cd472/w/68f19d10ddb2e4138d72a2ac/s/600x340?t=1668117065347",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "70x40",
+            "href": "https://cad.onshape.com/api/thumbnails/d/549690fbed3237db460cd472/w/68f19d10ddb2e4138d72a2ac/s/70x40?t=1668117065347",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          }
+        ],
+        "secondarySizes": null,
+        "id": null,
+        "href": "https://cad.onshape.com/api/thumbnails/d/549690fbed3237db460cd472/w/68f19d10ddb2e4138d72a2ac?t=1668117065347"
+      },
+      "parentId": "6c28cdece01d6d0a279d9fe0",
+      "projectId": null,
+      "defaultWorkspace": {
+        "state": null,
+        "canDelete": true,
+        "protectionRule": "OPEN",
+        "isReadOnly": false,
+        "parent": null,
+        "type": null,
+        "creator": null,
+        "lastModifier": null,
+        "description": null,
+        "modifiedAt": null,
+        "thumbnail": null,
+        "documentId": null,
+        "createdAt": null,
+        "microversion": null,
+        "parents": null,
+        "overrideDate": null,
+        "name": "Main",
+        "id": "68f19d10ddb2e4138d72a2ac",
+        "href": "https://cad.onshape.com/api/v12/documents/d/549690fbed3237db460cd472/workspaces/68f19d10ddb2e4138d72a2ac"
+      },
+      "permissionSet": [
+        "LINK",
+        "READ",
+        "EXPORT",
+        "COPY"
+      ],
+      "trash": false,
+      "totalWorkspacesUpdating": 0,
+      "totalWorkspacesScheduledForUpdate": 0,
+      "documentLabels": null,
+      "numberOfTimesReferenced": 1,
+      "numberOfTimesCopied": 1,
+      "likes": 0,
+      "publishedVersionId": null,
+      "notes": null,
+      "notRevisionManaged": false,
+      "forceExportRules": false,
+      "createdWithEducationPlan": false,
+      "anonymousAccessAllowed": false,
+      "anonymousAllowsExport": false,
+      "trashedAt": null,
+      "isOrphaned": false,
+      "hasReleaseRevisionableObjects": false,
+      "owner": {
+        "type": 0,
+        "isEnterpriseOwnedResource": false,
+        "image": "/images/placeholder-user.png",
+        "name": "Irra Eitam",
+        "id": "5d1f1557ab6ad716060fd7cc",
+        "href": "https://cad.onshape.com/api/v12/users/5d1f1557ab6ad716060fd7cc"
+      },
+      "connectionName": "",
+      "isMutable": false,
+      "isContainer": false,
+      "canMove": false,
+      "unparentHref": "https://cad.onshape.com/api/globaltreenodes/document/549690fbed3237db460cd472/parentInfo",
+      "connectionNames": null,
+      "isExternalConnectionResource": false,
+      "description": null,
+      "modifiedAt": "2022-11-10T21:49:59.145+00:00",
+      "createdAt": "2021-09-09T13:02:04.274+00:00",
+      "createdBy": {
+        "jsonType": "user-summary",
+        "state": 1,
+        "isOnshapeSupport": false,
+        "image": "/images/placeholder-user.png",
+        "name": "Irra Eitam",
+        "id": "5d1f1557ab6ad716060fd7cc",
+        "href": "https://cad.onshape.com/api/v12/users/5d1f1557ab6ad716060fd7cc"
+      },
+      "modifiedBy": {
+        "jsonType": "user-summary",
+        "state": 1,
+        "isOnshapeSupport": false,
+        "image": "/images/placeholder-user.png",
+        "name": "Irra Eitam",
+        "id": "5d1f1557ab6ad716060fd7cc",
+        "href": "https://cad.onshape.com/api/v12/users/5d1f1557ab6ad716060fd7cc"
+      },
+      "isEnterpriseOwned": false,
+      "resourceType": "document",
+      "name": "car 4 wheels",
+      "id": "549690fbed3237db460cd472",
+      "href": "https://cad.onshape.com/api/documents"
+    },
+    {
+      "jsonType": "document-summary-search",
+      "searchHits": [
+        {
+          "versionOrWorkspaceName": "Main",
+          "state": "IN_PROGRESS",
+          "type": "part",
+          "revDate": null,
+          "revision": null,
+          "partNumber": null,
+          "partId": "JZD",
+          "bodyType": "SOLID",
+          "elementId": "fefad3a7836f6ae75d9140d0",
+          "versionOrWorkspace": "w",
+          "versionOrWorkspaceId": "a05c3e3a606a431f952ad951",
+          "configurationId": null,
+          "isLatestRev": null,
+          "publications": [],
+          "publicationReaders": [],
+          "documentId": "a2eaaf49088fc9dd1eee3a04",
+          "name": "DC Motor 6v",
+          "projectId": null,
+          "folderId": null,
+          "sourceMap": {
+            "elementid": "fefad3a7836f6ae75d9140d0",
+            "modifiedAt": 1693001352233,
+            "pid": "JZD",
+            "dt": "PART",
+            "createdAt": 1693000749421,
+            "isAtPublishedFSVersion": false,
+            "bodytype": "SOLID",
+            "namesat": "DC Motor 6v",
+            "name": "DC Motor 6v",
+            "state": "IN_PROGRESS",
+            "join": {
+              "parent": "a2eaaf49088fc9dd1eee3a04",
+              "name": "part"
+            },
+            "id": "64e92430afc2f7313c15391b",
+            "category": [
+              "5877a03ebe4c21163b49dce2"
+            ],
+            "elementType": "PARTSTUDIO",
+            "workspaceid": "a05c3e3a606a431f952ad951"
+          },
+          "hitId": "64e92430afc2f7313c15391b",
+          "highlightedFields": {
+            "name": [
+              "<os-highlight>DC</os-highlight> <os-highlight>Motor</os-highlight> <os-highlight>6v</os-highlight>"
+            ]
+          },
+          "elementName": "DC Motor",
+          "meshState": 0
+        }
+      ],
+      "public": true,
+      "permission": "READ_COPY_EXPORT",
+      "defaultElementId": null,
+      "recentVersion": null,
+      "hasRelevantInsertables": false,
+      "canUnshare": false,
+      "userAccountLimitsBreached": false,
+      "supportTeamUserAndShared": false,
+      "isUsingManagedWorkflow": false,
+      "likedByCurrentUser": false,
+      "defaultVersionGraphMode": "ALL_BRANCHES",
+      "defaultVersionGraphShowMerges": true,
+      "defaultVersionGraphShowAutoVersions": true,
+      "sequence": null,
+      "tags": [],
+      "documentType": 0,
+      "thumbnail": {
+        "sizes": [
+          {
+            "size": "300x300",
+            "href": "https://cad.onshape.com/api/thumbnails/d/a2eaaf49088fc9dd1eee3a04/w/a05c3e3a606a431f952ad951/s/300x300?t=1693077661650",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "70x40",
+            "href": "https://cad.onshape.com/api/thumbnails/d/a2eaaf49088fc9dd1eee3a04/w/a05c3e3a606a431f952ad951/s/70x40?t=1693077661650",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "600x340",
+            "href": "https://cad.onshape.com/api/thumbnails/d/a2eaaf49088fc9dd1eee3a04/w/a05c3e3a606a431f952ad951/s/600x340?t=1693077661650",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "300x170",
+            "href": "https://cad.onshape.com/api/thumbnails/d/a2eaaf49088fc9dd1eee3a04/w/a05c3e3a606a431f952ad951/s/300x170?t=1693077661650",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          }
+        ],
+        "secondarySizes": null,
+        "id": null,
+        "href": "https://cad.onshape.com/api/thumbnails/d/a2eaaf49088fc9dd1eee3a04/w/a05c3e3a606a431f952ad951?t=1693077661650"
+      },
+      "parentId": null,
+      "projectId": null,
+      "defaultWorkspace": {
+        "state": null,
+        "canDelete": true,
+        "protectionRule": "OPEN",
+        "isReadOnly": false,
+        "parent": null,
+        "type": null,
+        "creator": null,
+        "lastModifier": null,
+        "description": null,
+        "modifiedAt": null,
+        "thumbnail": null,
+        "documentId": null,
+        "createdAt": null,
+        "microversion": null,
+        "parents": null,
+        "overrideDate": null,
+        "name": "Main",
+        "id": "a05c3e3a606a431f952ad951",
+        "href": "https://cad.onshape.com/api/v12/documents/d/a2eaaf49088fc9dd1eee3a04/workspaces/a05c3e3a606a431f952ad951"
+      },
+      "permissionSet": [
+        "LINK",
+        "READ",
+        "EXPORT",
+        "COPY"
+      ],
+      "trash": false,
+      "totalWorkspacesUpdating": 0,
+      "totalWorkspacesScheduledForUpdate": 0,
+      "documentLabels": null,
+      "numberOfTimesReferenced": 0,
+      "numberOfTimesCopied": 0,
+      "likes": 0,
+      "publishedVersionId": null,
+      "notes": null,
+      "notRevisionManaged": false,
+      "forceExportRules": false,
+      "createdWithEducationPlan": false,
+      "anonymousAccessAllowed": false,
+      "anonymousAllowsExport": false,
+      "trashedAt": null,
+      "isOrphaned": false,
+      "hasReleaseRevisionableObjects": false,
+      "owner": {
+        "type": 0,
+        "isEnterpriseOwnedResource": false,
+        "image": "/images/placeholder-user.png",
+        "name": "TPete",
+        "id": "64e611723041135fcad3c87a",
+        "href": "https://cad.onshape.com/api/v12/users/64e611723041135fcad3c87a"
+      },
+      "connectionName": "",
+      "isMutable": false,
+      "isContainer": false,
+      "canMove": false,
+      "unparentHref": "https://cad.onshape.com/api/globaltreenodes/document/a2eaaf49088fc9dd1eee3a04/parentInfo",
+      "connectionNames": null,
+      "isExternalConnectionResource": false,
+      "description": null,
+      "modifiedAt": "2023-08-26T19:17:50.935+00:00",
+      "createdAt": "2023-08-25T21:59:08.652+00:00",
+      "createdBy": {
+        "jsonType": "user-summary",
+        "state": 1,
+        "isOnshapeSupport": false,
+        "image": "/images/placeholder-user.png",
+        "name": "TPete",
+        "id": "64e611723041135fcad3c87a",
+        "href": "https://cad.onshape.com/api/v12/users/64e611723041135fcad3c87a"
+      },
+      "modifiedBy": {
+        "jsonType": "user-summary",
+        "state": 1,
+        "isOnshapeSupport": false,
+        "image": "/images/placeholder-user.png",
+        "name": "TPete",
+        "id": "64e611723041135fcad3c87a",
+        "href": "https://cad.onshape.com/api/v12/users/64e611723041135fcad3c87a"
+      },
+      "isEnterpriseOwned": false,
+      "resourceType": "document",
+      "name": "dc motor - ~21mm dia, 2mm shaft - Fan Assembly",
+      "id": "a2eaaf49088fc9dd1eee3a04",
+      "href": "https://cad.onshape.com/api/documents"
+    },
+    {
+      "jsonType": "document-summary-search",
+      "searchHits": [
+        {
+          "versionOrWorkspaceName": "V2",
+          "state": "IN_PROGRESS",
+          "type": "part",
+          "revDate": null,
+          "revision": null,
+          "partNumber": null,
+          "partId": "JHD",
+          "bodyType": "SOLID",
+          "elementId": "2a3234baf8004da6e9864291",
+          "versionOrWorkspace": "v",
+          "versionOrWorkspaceId": "7dee7fd5587c56edd68d86bf",
+          "configurationId": null,
+          "isLatestRev": null,
+          "publications": [],
+          "publicationReaders": [],
+          "documentId": "971ecb884092bb8ae19bedf2",
+          "name": "DC Motor 6V",
+          "projectId": null,
+          "folderId": null,
+          "sourceMap": {
+            "elementid": "2a3234baf8004da6e9864291",
+            "isRecentVersion": true,
+            "modifiedAt": 1680431937207,
+            "pid": "JHD",
+            "dt": "PART",
+            "createdAt": 1680431936810,
+            "isAtPublishedFSVersion": false,
+            "versionid": "7dee7fd5587c56edd68d86bf",
+            "bodytype": "SOLID",
+            "namesat": "DC Motor 6V",
+            "name": "DC Motor 6V",
+            "state": "IN_PROGRESS",
+            "join": {
+              "parent": "971ecb884092bb8ae19bedf2",
+              "name": "part"
+            },
+            "id": "64295b41f51dc23838f829aa",
+            "category": [
+              "5877a03ebe4c21163b49dce2"
+            ],
+            "elementType": "PARTSTUDIO"
+          },
+          "hitId": "64295b41f51dc23838f829aa",
+          "highlightedFields": {
+            "name": [
+              "<os-highlight>DC</os-highlight> <os-highlight>Motor</os-highlight> <os-highlight>6V</os-highlight>"
+            ]
+          },
+          "elementName": "Part Studio 1",
+          "meshState": 0
+        },
+        {
+          "versionOrWorkspaceName": "Main",
+          "state": "IN_PROGRESS",
+          "type": "part",
+          "revDate": null,
+          "revision": null,
+          "partNumber": null,
+          "partId": "JHD",
+          "bodyType": "SOLID",
+          "elementId": "2a3234baf8004da6e9864291",
+          "versionOrWorkspace": "w",
+          "versionOrWorkspaceId": "8e266780d13510985c6564c1",
+          "configurationId": null,
+          "isLatestRev": null,
+          "publications": [],
+          "publicationReaders": [],
+          "documentId": "971ecb884092bb8ae19bedf2",
+          "name": "DC Motor 6V",
+          "projectId": null,
+          "folderId": null,
+          "sourceMap": {
+            "elementid": "2a3234baf8004da6e9864291",
+            "modifiedAt": 1680431930567,
+            "pid": "JHD",
+            "dt": "PART",
+            "createdAt": 1615041798178,
+            "isAtPublishedFSVersion": false,
+            "bodytype": "SOLID",
+            "namesat": "DC Motor 6V",
+            "name": "DC Motor 6V",
+            "state": "IN_PROGRESS",
+            "join": {
+              "parent": "971ecb884092bb8ae19bedf2",
+              "name": "part"
+            },
+            "id": "604395062ec01d1871d5019c",
+            "category": [
+              "5877a03ebe4c21163b49dce2"
+            ],
+            "elementType": "PARTSTUDIO",
+            "workspaceid": "8e266780d13510985c6564c1"
+          },
+          "hitId": "604395062ec01d1871d5019c",
+          "highlightedFields": {
+            "name": [
+              "<os-highlight>DC</os-highlight> <os-highlight>Motor</os-highlight> <os-highlight>6V</os-highlight>"
+            ]
+          },
+          "elementName": "Part Studio 1",
+          "meshState": 0
+        }
+      ],
+      "public": true,
+      "permission": "READ_COPY_EXPORT",
+      "defaultElementId": null,
+      "recentVersion": null,
+      "hasRelevantInsertables": false,
+      "canUnshare": false,
+      "userAccountLimitsBreached": false,
+      "supportTeamUserAndShared": false,
+      "isUsingManagedWorkflow": false,
+      "likedByCurrentUser": false,
+      "defaultVersionGraphMode": "ALL_BRANCHES",
+      "defaultVersionGraphShowMerges": true,
+      "defaultVersionGraphShowAutoVersions": true,
+      "sequence": null,
+      "tags": [],
+      "documentType": 0,
+      "thumbnail": {
+        "sizes": [
+          {
+            "size": "600x340",
+            "href": "https://cad.onshape.com/api/thumbnails/d/971ecb884092bb8ae19bedf2/w/8e266780d13510985c6564c1/s/600x340?t=1680431977324",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "300x170",
+            "href": "https://cad.onshape.com/api/thumbnails/d/971ecb884092bb8ae19bedf2/w/8e266780d13510985c6564c1/s/300x170?t=1680431977324",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "70x40",
+            "href": "https://cad.onshape.com/api/thumbnails/d/971ecb884092bb8ae19bedf2/w/8e266780d13510985c6564c1/s/70x40?t=1680431977324",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          },
+          {
+            "size": "300x300",
+            "href": "https://cad.onshape.com/api/thumbnails/d/971ecb884092bb8ae19bedf2/w/8e266780d13510985c6564c1/s/300x300?t=1680431977324",
+            "mediaType": "image/png",
+            "uniqueId": null,
+            "viewOrientation": "",
+            "renderMode": "",
+            "sheetName": null
+          }
+        ],
+        "secondarySizes": null,
+        "id": null,
+        "href": "https://cad.onshape.com/api/thumbnails/d/971ecb884092bb8ae19bedf2/w/8e266780d13510985c6564c1?t=1680431977324"
+      },
+      "parentId": "f83a1f07f1639add2e5fb9d5",
+      "projectId": null,
+      "defaultWorkspace": {
+        "state": null,
+        "canDelete": true,
+        "protectionRule": "OPEN",
+        "isReadOnly": false,
+        "parent": null,
+        "type": null,
+        "creator": null,
+        "lastModifier": null,
+        "description": null,
+        "modifiedAt": null,
+        "thumbnail": null,
+        "documentId": null,
+        "createdAt": null,
+        "microversion": null,
+        "parents": null,
+        "overrideDate": null,
+        "name": "Main",
+        "id": "8e266780d13510985c6564c1",
+        "href": "https://cad.onshape.com/api/v12/documents/d/971ecb884092bb8ae19bedf2/workspaces/8e266780d13510985c6564c1"
+      },
+      "permissionSet": [
+        "LINK",
+        "READ",
+        "EXPORT",
+        "COPY"
+      ],
+      "trash": false,
+      "totalWorkspacesUpdating": 0,
+      "totalWorkspacesScheduledForUpdate": 0,
+      "documentLabels": null,
+      "numberOfTimesReferenced": 15,
+      "numberOfTimesCopied": 3,
+      "likes": 0,
+      "publishedVersionId": null,
+      "notes": null,
+      "notRevisionManaged": false,
+      "forceExportRules": false,
+      "createdWithEducationPlan": false,
+      "anonymousAccessAllowed": false,
+      "anonymousAllowsExport": false,
+      "trashedAt": null,
+      "isOrphaned": false,
+      "hasReleaseRevisionableObjects": false,
+      "owner": {
+        "type": 0,
+        "isEnterpriseOwnedResource": false,
+        "image": "/images/placeholder-user.png",
+        "name": "Rasmus Nilsson",
+        "id": "5fc0db7a7bc253154980668a",
+        "href": "https://cad.onshape.com/api/v12/users/5fc0db7a7bc253154980668a"
+      },
+      "connectionName": "",
+      "isMutable": false,
+      "isContainer": false,
+      "canMove": false,
+      "unparentHref": "https://cad.onshape.com/api/globaltreenodes/document/971ecb884092bb8ae19bedf2/parentInfo",
+      "connectionNames": null,
+      "isExternalConnectionResource": false,
+      "description": null,
+      "modifiedAt": "2023-04-02T10:39:45.115+00:00",
+      "createdAt": "2021-03-06T14:38:11.628+00:00",
+      "createdBy": {
+        "jsonType": "user-summary",
+        "state": 1,
+        "isOnshapeSupport": false,
+        "image": "/images/placeholder-user.png",
+        "name": "Rasmus Nilsson",
+        "id": "5fc0db7a7bc253154980668a",
+        "href": "https://cad.onshape.com/api/v12/users/5fc0db7a7bc253154980668a"
+      },
+      "modifiedBy": {
+        "jsonType": "user-summary",
+        "state": 1,
+        "isOnshapeSupport": false,
+        "image": "/images/placeholder-user.png",
+        "name": "Rasmus Nilsson",
+        "id": "5fc0db7a7bc253154980668a",
+        "href": "https://cad.onshape.com/api/v12/users/5fc0db7a7bc253154980668a"
+      },
+      "isEnterpriseOwned": false,
+      "resourceType": "document",
+      "name": "6VDC",
+      "id": "971ecb884092bb8ae19bedf2",
+      "href": "https://cad.onshape.com/api/documents"
+    }
+  ],
+  "previous": null
+}

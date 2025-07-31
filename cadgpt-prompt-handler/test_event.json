@@ -1,0 +1,87 @@
+{
+  "resource": "/prompt-handler",
+  "path": "/prompt-handler",
+  "httpMethod": "POST",
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Encoding": "gzip, deflate, br, zstd",
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Host": "lmt3yqa7uh.execute-api.us-west-2.amazonaws.com",
+    "User-Agent": "python-requests/2.32.4",
+    "X-Amzn-Trace-Id": "Root=1-68896ad8-5518e0892573bdbe5072cbca",
+    "x-api-key": "t4hwon7axc4bA11ySehIR4UN6QxgWVcA7PztIZWE",
+    "X-Forwarded-For": "72.179.11.4",
+    "X-Forwarded-Port": "443",
+    "X-Forwarded-Proto": "https"
+  },
+  "multiValueHeaders": {
+    "Accept": [
+      "*/*"
+    ],
+    "Accept-Encoding": [
+      "gzip, deflate, br, zstd"
+    ],
+    "Content-Type": [
+      "application/x-www-form-urlencoded"
+    ],
+    "Host": [
+      "lmt3yqa7uh.execute-api.us-west-2.amazonaws.com"
+    ],
+    "User-Agent": [
+      "python-requests/2.32.4"
+    ],
+    "X-Amzn-Trace-Id": [
+      "Root=1-68896ad8-5518e0892573bdbe5072cbca"
+    ],
+    "x-api-key": [
+      "t4hwon7axc4bA11ySehIR4UN6QxgWVcA7PztIZWE"
+    ],
+    "X-Forwarded-For": [
+      "72.179.11.4"
+    ],
+    "X-Forwarded-Port": [
+      "443"
+    ],
+    "X-Forwarded-Proto": [
+      "https"
+    ]
+  },
+  "queryStringParameters": "",
+  "multiValueQueryStringParameters": "",
+  "pathParameters": "",
+  "stageVariables": "",
+  "requestContext": {
+    "resourceId": "m9sx4z",
+    "resourcePath": "/prompt-handler",
+    "httpMethod": "POST",
+    "extendedRequestId": "Of2h1EgnPHcEMzQ=",
+    "requestTime": "30/Jul/2025:00:44:08 +0000",
+    "path": "/dev/prompt-handler",
+    "accountId": "791360295823",
+    "protocol": "HTTP/1.1",
+    "stage": "dev",
+    "domainPrefix": "lmt3yqa7uh",
+    "requestTimeEpoch": 1753836248178,
+    "requestId": "00c169ea-68b9-4211-b9fb-f5d7275cd489",
+    "identity": {
+      "cognitoIdentityPoolId": "",
+      "cognitoIdentityId": "",
+      "apiKey": "t4hwon7axc4bA11ySehIR4UN6QxgWVcA7PztIZWE",
+      "principalOrgId": "",
+      "cognitoAuthenticationType": "",
+      "userArn": "",
+      "userAgent": "python-requests/2.32.4",
+      "accountId": "",
+      "caller": "",
+      "sourceIp": "72.179.11.4",
+      "accessKey": "",
+      "cognitoAuthenticationProvider": "",
+      "user": ""
+    },
+    "domainName": "lmt3yqa7uh.execute-api.us-west-2.amazonaws.com",
+    "deploymentId": "70kwsy",
+    "apiId": "lmt3yqa7uh"
+  },
+  "body": "{\"prompt\": \"a cube with sides of length 10cm\", \"doc_id\": \"d:c86d2bb9b0b5645b6ef82963:w:c1f073b8750c1e629cd15c6b:e:6299020e04e494c4245b4a9c\" }",
+  "isBase64Encoded": false
+}

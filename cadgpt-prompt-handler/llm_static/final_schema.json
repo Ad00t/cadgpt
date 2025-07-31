@@ -1,0 +1,754 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "metadata",
+    "feature"
+  ],
+  "properties": {
+    "feature": {
+      "$ref": "#/$defs/feature"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "done",
+        "success"
+      ],
+      "properties": {
+        "done": {
+          "type": "boolean"
+        },
+        "success": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "feature": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "btType": {
+              "type": "string",
+              "const": "BTMFeature-134"
+            },
+            "featureId": {
+              "type": "string",
+              "description": "Unique ID of the feature instance within this Part Studio."
+            },
+            "featureType": {
+              "type": "string",
+              "description": "The name of the feature spec that this feature instantiates."
+            },
+            "importMicroversion": {
+              "type": "string",
+              "description": "Element microversion that is being imported."
+            },
+            "mateConnectorFeature": {
+              "type": "boolean"
+            },
+            "name": {
+              "type": "string",
+              "description": "User-visible name of the feature."
+            },
+            "namespace": {
+              "type": "string",
+              "description": "Indicates where the feature definition lives. Features in the FeatureScript standard library have a namespace value of `\"\"`. Custom features identify the Feature Studio that contains the definition."
+            },
+            "nodeId": {
+              "type": "string",
+              "description": "ID for the feature node."
+            },
+            "parameters": {
+              "type": "array",
+              "description": "A list of parameter values for instantiation of the feature spec. Parameters are present for all defined parameters, even if not used in a specific instantiation.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "btType": {
+                    "type": "string",
+                    "description": "Type of JSON object."
+                  },
+                  "importMicroversion": {
+                    "type": "string",
+                    "description": "Microversion that resulted from the import."
+                  },
+                  "nodeId": {
+                    "type": "string",
+                    "description": "ID of the parameter's node."
+                  },
+                  "parameterId": {
+                    "type": "string",
+                    "description": "Unique ID of the parameter."
+                  },
+                  "valueString": {
+                    "type": "string"
+                  }
+                },
+                "description": "A list of parameter values for instantiation of the feature spec. Parameters are present for all defined parameters, even if not used in a specific instantiation.",
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "additionalProperties": false,
+                "required": [
+                  "btType",
+                  "importMicroversion",
+                  "nodeId",
+                  "parameterId",
+                  "valueString"
+                ]
+              }
+            },
+            "returnAfterSubfeatures": {
+              "type": "boolean",
+              "description": "For internal use only. Should always be `false`."
+            },
+            "subFeatures": {
+              "type": "array",
+              "description": "List of subfeatures belonging to the feature.",
+              "items": {
+                "$ref": "#/$defs/feature"
+              }
+            },
+            "suppressed": {
+              "type": "boolean",
+              "description": "If `true`, the feature is suppressed. It will skip regeneration, denoted by a line through the name in the Feature list."
+            },
+            "suppressionConfigured": {
+              "type": "boolean",
+              "description": "`true` if the suppression is configured in the Part Studio."
+            },
+            "suppressionState": {
+              "type": "object",
+              "properties": {
+                "btType": {
+                  "type": "string",
+                  "description": "Type of JSON object."
+                },
+                "importMicroversion": {
+                  "type": "string",
+                  "description": "Microversion that resulted from the import."
+                },
+                "nodeId": {
+                  "type": "string"
+                }
+              },
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "additionalProperties": false,
+              "required": [
+                "btType",
+                "importMicroversion",
+                "nodeId"
+              ]
+            },
+            "variableStudioReference": {
+              "type": "boolean",
+              "description": "If `true`, the feature references a Variable Studio."
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "additionalProperties": false,
+          "required": [
+            "btType",
+            "featureId",
+            "featureType",
+            "importMicroversion",
+            "mateConnectorFeature",
+            "name",
+            "namespace",
+            "nodeId",
+            "parameters",
+            "returnAfterSubfeatures",
+            "subFeatures",
+            "suppressed",
+            "suppressionConfigured",
+            "suppressionState",
+            "variableStudioReference"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "btType": {
+              "type": "string",
+              "description": "Type of JSON object.",
+              "const": "BTMSketch-151"
+            },
+            "featureId": {
+              "type": "string",
+              "description": "Unique ID of the feature instance within this Part Studio."
+            },
+            "featureType": {
+              "type": "string",
+              "description": "The name of the feature spec that this feature instantiates."
+            },
+            "importMicroversion": {
+              "type": "string",
+              "description": "Element microversion that is being imported."
+            },
+            "mateConnectorFeature": {
+              "type": "boolean"
+            },
+            "name": {
+              "type": "string",
+              "description": "User-visible name of the feature."
+            },
+            "namespace": {
+              "type": "string",
+              "description": "Indicates where the feature definition lives. Features in the FeatureScript standard library have a namespace value of `\"\"`. Custom features identify the Feature Studio that contains the definition."
+            },
+            "nodeId": {
+              "type": "string",
+              "description": "ID for the feature node."
+            },
+            "parameters": {
+              "type": "array",
+              "description": "A list of parameter values for instantiation of the feature spec. Parameters are present for all defined parameters, even if not used in a specific instantiation.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "btType": {
+                    "type": "string",
+                    "description": "Type of JSON object."
+                  },
+                  "importMicroversion": {
+                    "type": "string",
+                    "description": "Microversion that resulted from the import."
+                  },
+                  "nodeId": {
+                    "type": "string",
+                    "description": "ID of the parameter's node."
+                  },
+                  "parameterId": {
+                    "type": "string",
+                    "description": "Unique ID of the parameter."
+                  },
+                  "valueString": {
+                    "type": "string"
+                  }
+                },
+                "description": "A list of parameter values for instantiation of the feature spec. Parameters are present for all defined parameters, even if not used in a specific instantiation.",
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "additionalProperties": false,
+                "required": [
+                  "btType",
+                  "importMicroversion",
+                  "nodeId",
+                  "parameterId",
+                  "valueString"
+                ]
+              }
+            },
+            "returnAfterSubfeatures": {
+              "type": "boolean",
+              "description": "For internal use only. Should always be `false`."
+            },
+            "subFeatures": {
+              "type": "array",
+              "description": "List of subfeatures belonging to the feature.",
+              "items": {
+                "$ref": "#/$defs/feature"
+              }
+            },
+            "suppressed": {
+              "type": "boolean",
+              "description": "If `true`, the feature is suppressed. It will skip regeneration, denoted by a line through the name in the Feature list."
+            },
+            "suppressionConfigured": {
+              "type": "boolean",
+              "description": "`true` if the suppression is configured in the Part Studio."
+            },
+            "suppressionState": {
+              "type": "object",
+              "properties": {
+                "btType": {
+                  "type": "string",
+                  "description": "Type of JSON object."
+                },
+                "importMicroversion": {
+                  "type": "string",
+                  "description": "Microversion that resulted from the import."
+                },
+                "nodeId": {
+                  "type": "string"
+                }
+              },
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "additionalProperties": false,
+              "required": [
+                "btType",
+                "importMicroversion",
+                "nodeId"
+              ]
+            },
+            "variableStudioReference": {
+              "type": "boolean",
+              "description": "If `true`, the feature references a Variable Studio."
+            },
+            "constraints": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "btType": {
+                    "type": "string",
+                    "description": "Type of JSON object."
+                  },
+                  "importMicroversion": {
+                    "type": "string",
+                    "description": "Element microversion that is being imported."
+                  },
+                  "nodeId": {
+                    "type": "string"
+                  },
+                  "combinedSketchEntityType": {
+                    "type": "object",
+                    "properties": {
+                      "constraintType": {
+                        "type": "string",
+                        "enum": [
+                          "NONE",
+                          "COINCIDENT",
+                          "PARALLEL",
+                          "VERTICAL",
+                          "HORIZONTAL",
+                          "PERPENDICULAR",
+                          "CONCENTRIC",
+                          "MIRROR",
+                          "MIDPOINT",
+                          "TANGENT",
+                          "EQUAL",
+                          "LENGTH",
+                          "DISTANCE",
+                          "ANGLE",
+                          "RADIUS",
+                          "NORMAL",
+                          "FIX",
+                          "PROJECTED",
+                          "OFFSET",
+                          "CIRCULAR_PATTERN",
+                          "PIERCE",
+                          "LINEAR_PATTERN",
+                          "MAJOR_DIAMETER",
+                          "MINOR_DIAMETER",
+                          "QUADRANT",
+                          "DIAMETER",
+                          "SILHOUETTED",
+                          "CENTERLINE_DIMENSION",
+                          "INTERSECTED",
+                          "RHO",
+                          "EQUAL_CURVATURE",
+                          "BEZIER_DEGREE",
+                          "FREEZE",
+                          "UNKNOWN"
+                        ],
+                        "$schema": "http://json-schema.org/draft-04/schema#"
+                      },
+                      "entityType": {
+                        "type": "string",
+                        "enum": [
+                          "CURVE",
+                          "IMAGE_ENTITY",
+                          "POINT",
+                          "TEXT",
+                          "CIRCLE",
+                          "CONIC",
+                          "SPLINE",
+                          "ELLIPSE",
+                          "LINE",
+                          "UNKNOWN"
+                        ],
+                        "$schema": "http://json-schema.org/draft-04/schema#"
+                      }
+                    },
+                    "$schema": "http://json-schema.org/draft-04/schema#",
+                    "additionalProperties": false,
+                    "required": [
+                      "constraintType",
+                      "entityType"
+                    ]
+                  },
+                  "entityId": {
+                    "type": "string"
+                  },
+                  "entityIdAndReplaceInDependentFields": {
+                    "type": "string"
+                  },
+                  "index": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "namespace": {
+                    "type": "string"
+                  },
+                  "parameters": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "btType": {
+                          "type": "string",
+                          "description": "Type of JSON object."
+                        },
+                        "importMicroversion": {
+                          "type": "string",
+                          "description": "Microversion that resulted from the import."
+                        },
+                        "nodeId": {
+                          "type": "string",
+                          "description": "ID of the parameter's node."
+                        },
+                        "parameterId": {
+                          "type": "string",
+                          "description": "Unique ID of the parameter."
+                        },
+                        "valueString": {
+                          "type": "string"
+                        }
+                      },
+                      "description": "A list of parameter values for instantiation of the feature spec. Parameters are present for all defined parameters, even if not used in a specific instantiation.",
+                      "$schema": "http://json-schema.org/draft-04/schema#",
+                      "additionalProperties": false,
+                      "required": [
+                        "btType",
+                        "importMicroversion",
+                        "nodeId",
+                        "parameterId",
+                        "valueString"
+                      ]
+                    }
+                  },
+                  "constraintType": {
+                    "type": "string",
+                    "enum": [
+                      "NONE",
+                      "COINCIDENT",
+                      "PARALLEL",
+                      "VERTICAL",
+                      "HORIZONTAL",
+                      "PERPENDICULAR",
+                      "CONCENTRIC",
+                      "MIRROR",
+                      "MIDPOINT",
+                      "TANGENT",
+                      "EQUAL",
+                      "LENGTH",
+                      "DISTANCE",
+                      "ANGLE",
+                      "RADIUS",
+                      "NORMAL",
+                      "FIX",
+                      "PROJECTED",
+                      "OFFSET",
+                      "CIRCULAR_PATTERN",
+                      "PIERCE",
+                      "LINEAR_PATTERN",
+                      "MAJOR_DIAMETER",
+                      "MINOR_DIAMETER",
+                      "QUADRANT",
+                      "DIAMETER",
+                      "SILHOUETTED",
+                      "CENTERLINE_DIMENSION",
+                      "INTERSECTED",
+                      "RHO",
+                      "EQUAL_CURVATURE",
+                      "BEZIER_DEGREE",
+                      "FREEZE",
+                      "UNKNOWN"
+                    ],
+                    "$schema": "http://json-schema.org/draft-04/schema#"
+                  },
+                  "drivenDimension": {
+                    "type": "boolean"
+                  },
+                  "hasOffsetData1": {
+                    "type": "boolean"
+                  },
+                  "hasOffsetData2": {
+                    "type": "boolean"
+                  },
+                  "hasPierceParameter": {
+                    "type": "boolean"
+                  },
+                  "helpParameters": {
+                    "type": "array",
+                    "items": {
+                      "type": "number",
+                      "format": "double"
+                    }
+                  },
+                  "offsetDistance1": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "offsetDistance2": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "offsetOrientation1": {
+                    "type": "boolean"
+                  },
+                  "offsetOrientation2": {
+                    "type": "boolean"
+                  },
+                  "pierceParameter": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                },
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "additionalProperties": false,
+                "required": [
+                  "btType",
+                  "importMicroversion",
+                  "nodeId",
+                  "combinedSketchEntityType",
+                  "entityId",
+                  "entityIdAndReplaceInDependentFields",
+                  "index",
+                  "name",
+                  "namespace",
+                  "parameters",
+                  "constraintType",
+                  "drivenDimension",
+                  "hasOffsetData1",
+                  "hasOffsetData2",
+                  "hasPierceParameter",
+                  "helpParameters",
+                  "offsetDistance1",
+                  "offsetDistance2",
+                  "offsetOrientation1",
+                  "offsetOrientation2",
+                  "pierceParameter"
+                ]
+              }
+            },
+            "entities": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "btType": {
+                    "type": "string",
+                    "description": "Type of JSON object."
+                  },
+                  "importMicroversion": {
+                    "type": "string",
+                    "description": "Element microversion that is being imported."
+                  },
+                  "nodeId": {
+                    "type": "string"
+                  },
+                  "combinedSketchEntityType": {
+                    "type": "object",
+                    "properties": {
+                      "constraintType": {
+                        "type": "string",
+                        "enum": [
+                          "NONE",
+                          "COINCIDENT",
+                          "PARALLEL",
+                          "VERTICAL",
+                          "HORIZONTAL",
+                          "PERPENDICULAR",
+                          "CONCENTRIC",
+                          "MIRROR",
+                          "MIDPOINT",
+                          "TANGENT",
+                          "EQUAL",
+                          "LENGTH",
+                          "DISTANCE",
+                          "ANGLE",
+                          "RADIUS",
+                          "NORMAL",
+                          "FIX",
+                          "PROJECTED",
+                          "OFFSET",
+                          "CIRCULAR_PATTERN",
+                          "PIERCE",
+                          "LINEAR_PATTERN",
+                          "MAJOR_DIAMETER",
+                          "MINOR_DIAMETER",
+                          "QUADRANT",
+                          "DIAMETER",
+                          "SILHOUETTED",
+                          "CENTERLINE_DIMENSION",
+                          "INTERSECTED",
+                          "RHO",
+                          "EQUAL_CURVATURE",
+                          "BEZIER_DEGREE",
+                          "FREEZE",
+                          "UNKNOWN"
+                        ],
+                        "$schema": "http://json-schema.org/draft-04/schema#"
+                      },
+                      "entityType": {
+                        "type": "string",
+                        "enum": [
+                          "CURVE",
+                          "IMAGE_ENTITY",
+                          "POINT",
+                          "TEXT",
+                          "CIRCLE",
+                          "CONIC",
+                          "SPLINE",
+                          "ELLIPSE",
+                          "LINE",
+                          "UNKNOWN"
+                        ],
+                        "$schema": "http://json-schema.org/draft-04/schema#"
+                      }
+                    },
+                    "$schema": "http://json-schema.org/draft-04/schema#",
+                    "additionalProperties": false,
+                    "required": [
+                      "constraintType",
+                      "entityType"
+                    ]
+                  },
+                  "entityId": {
+                    "type": "string"
+                  },
+                  "entityIdAndReplaceInDependentFields": {
+                    "type": "string"
+                  },
+                  "index": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "namespace": {
+                    "type": "string"
+                  },
+                  "parameters": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "btType": {
+                          "type": "string",
+                          "description": "Type of JSON object."
+                        },
+                        "importMicroversion": {
+                          "type": "string",
+                          "description": "Microversion that resulted from the import."
+                        },
+                        "nodeId": {
+                          "type": "string",
+                          "description": "ID of the parameter's node."
+                        },
+                        "parameterId": {
+                          "type": "string",
+                          "description": "Unique ID of the parameter."
+                        },
+                        "valueString": {
+                          "type": "string"
+                        }
+                      },
+                      "description": "A list of parameter values for instantiation of the feature spec. Parameters are present for all defined parameters, even if not used in a specific instantiation.",
+                      "$schema": "http://json-schema.org/draft-04/schema#",
+                      "additionalProperties": false,
+                      "required": [
+                        "btType",
+                        "importMicroversion",
+                        "nodeId",
+                        "parameterId",
+                        "valueString"
+                      ]
+                    }
+                  },
+                  "controlBoxIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "entityType": {
+                    "type": "string",
+                    "enum": [
+                      "CURVE",
+                      "IMAGE_ENTITY",
+                      "POINT",
+                      "TEXT",
+                      "CIRCLE",
+                      "CONIC",
+                      "SPLINE",
+                      "ELLIPSE",
+                      "LINE",
+                      "UNKNOWN"
+                    ],
+                    "$schema": "http://json-schema.org/draft-04/schema#"
+                  },
+                  "functionName": {
+                    "type": "string"
+                  },
+                  "isConstruction": {
+                    "type": "boolean"
+                  },
+                  "isFromEndpointSplineHandle": {
+                    "type": "boolean"
+                  },
+                  "isFromSplineControlPolygon": {
+                    "type": "boolean"
+                  },
+                  "isFromSplineHandle": {
+                    "type": "boolean"
+                  }
+                },
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "additionalProperties": false,
+                "required": [
+                  "btType",
+                  "importMicroversion",
+                  "nodeId",
+                  "combinedSketchEntityType",
+                  "entityId",
+                  "entityIdAndReplaceInDependentFields",
+                  "index",
+                  "name",
+                  "namespace",
+                  "parameters",
+                  "controlBoxIds",
+                  "entityType",
+                  "functionName",
+                  "isConstruction",
+                  "isFromEndpointSplineHandle",
+                  "isFromSplineControlPolygon",
+                  "isFromSplineHandle"
+                ]
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "additionalProperties": false,
+          "required": [
+            "btType",
+            "featureId",
+            "featureType",
+            "importMicroversion",
+            "mateConnectorFeature",
+            "name",
+            "namespace",
+            "nodeId",
+            "parameters",
+            "returnAfterSubfeatures",
+            "subFeatures",
+            "suppressed",
+            "suppressionConfigured",
+            "suppressionState",
+            "variableStudioReference",
+            "constraints",
+            "entities"
+          ]
+        }
+      ]
+    }
+  }
+}
