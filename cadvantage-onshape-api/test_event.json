@@ -1,0 +1,8 @@
+{
+  "endpoint": "search_docs",
+  "payload": {
+    "query": "gear",
+    "limit": 20,
+    "offset": 0 
+  }
+}

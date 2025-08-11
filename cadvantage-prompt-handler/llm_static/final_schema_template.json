@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "metadata",
+    "feature"
+  ],
+  "properties": {
+    "feature": {
+      "$ref": "#/$defs/BTMFeature-134"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "done",
+        "success",
+        "call_type"
+      ],
+      "properties": {
+        "done": {
+          "type": "boolean",
+          "description": "true if there are no more features or calls to make"
+        },
+        "success": {
+          "type": "boolean",
+          "description": "true if the current step's feature generation was successful"
+        },
+        "call_type": {
+          "type": "string",
+          "description": "The type of call to make. If 'done' is true, this will be an empty string",
+          "anyOf": [
+            { "const": "add_feature" },
+            { "const": "update_feature" },
+            { "const": "delete_feature" },
+            { "const": "" }
+          ]
+        }
+      }
+    }
+  },
+  "$defs": {}
+}

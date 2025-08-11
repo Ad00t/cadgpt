@@ -1,0 +1,38 @@
+{
+  "Records": [
+    {
+      "eventVersion": "2.1",
+      "eventSource": "aws:s3",
+      "awsRegion": "us-west-2",
+      "eventTime": "2025-07-27T23:27:00.363Z",
+      "eventName": "ObjectCreated:Put",
+      "userIdentity": {
+        "principalId": "A2NQZ8GJGGK41G"
+      },
+      "requestParameters": {
+        "sourceIPAddress": "72.179.11.4"
+      },
+      "responseElements": {
+        "x-amz-request-id": "9NQMK9YEYPBFXTRJ",
+        "x-amz-id-2": "Rw1GyE0lmtCL2RWS83vdwCRy6EZzGPLOQpumdEpQTmEARd/P4jBqB80Pf805gUsSb6Em8Eqz5OcjMnJAyPAq+J/f/osY/8mt"
+      },
+      "s3": {
+        "s3SchemaVersion": "1.0",
+        "configurationId": "5ac2df67-a1d2-4f4a-9af0-8643a011084b",
+        "bucket": {
+          "name": "cadgpt-onshape-docs",
+          "ownerIdentity": {
+            "principalId": "A2NQZ8GJGGK41G"
+          },
+          "arn": "arn:aws:s3:::cadgpt-onshape-docs"
+        },
+        "object": {
+          "key": "docs_1753598568985_26.json",
+          "size": 4144799,
+          "eTag": "37fdfca86feef2e6a55f0f531096ad64",
+          "sequencer": "006886B5C4488A27ED"
+        }
+      }
+    }
+  ]
+}
