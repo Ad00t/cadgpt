@@ -41,8 +41,9 @@ def lambda_handler(event, context):
     try:
         body = json.loads(event['body'])
         prompt = body['prompt'].strip()
+        logger.info(f'{log_prefix}: prompt: "{prompt}"')    
         doc_id = body['doc_id'].strip()
-        logger.info(f'{log_prefix}: prompt: "{prompt}" doc_id: "{doc_id}"')       
+        logger.info(f'{log_prefix}: doc_id: "{doc_id}"')       
     except Exception as e: 
         logger.error(f'{log_prefix}: prompt error: ', exc_info=True)
         return { 'statusCode': 400, 'body': json.dumps({ 'message': 'bad prompt' }) }
@@ -182,29 +183,58 @@ def generate_llm_response(context, prompt, doc_id):
                     }
                 }
             )
-            logger.info(f'{log_prefix} step {step}: {response}')
-            response_json = json.loads(response.output_text)
             
-            add_feature_response = json.load(
-                lambda_client.invoke(
-                    FunctionName='cadgpt-onshape-api',
-                    InvocationType='RequestResponse',  # synchronous
-                    Payload=json.dumps({
-                        'endpoint': 'add_feature',
-                        'payload': {
-                            'doc_id': doc_id,
-                            'feature': response_json['feature']
-                        }
-                    }),
-                )['Payload']
-            )
-            logger.info(f"{log_prefix}: add_feature: {add_feature_response['statusCode']} {add_feature_response['body']}")
-
+            response_json = json.loads(response.output_text)
             if response_json['metadata']['done']:
                 break
+            handle_llm_response(response_json, doc_id, step)
         except Exception as e:
             logger.error(f'{log_prefix}: failed: ', exc_info=True)
             break
+
+def handle_llm_response(response_json, doc_id, step):
+    log_prefix = f'handle_llm_response()'
+    try:
+        logger.info(f'{log_prefix} step {step}: {json.dumps(response_json)}')
+        if response_json['metadata']['done']:
+            logger.info(f'{log_prefix}: done')
+            return
+
+        call_type = response_json['metadata']['call_type']
+        onshape_payload = { 'doc_id': doc_id }
+        match call_type:
+            case 'add_feature':
+                if 'featureId' in response_json['feature']:
+                    del response_json['feature']['featureId']
+                onshape_payload.update({
+                    'feature': response_json['feature'] 
+                })
+            case 'update_feature':
+                onshape_payload.update({
+                    'feature': response_json['feature'],
+                    'feature_id': response_json['feature']['feature_id']
+                })
+            case 'delete_feature':
+                onshape_payload.update({
+                    'feature_id': response_json['feature']['feature_id']
+                })
+        
+        lambda_payload = json.dumps({
+            'endpoint': call_type,
+            'payload': onshape_payload
+        })
+        logger.info(f'{log_prefix}: {lambda_payload}')
+        call_response = json.load(
+            lambda_client.invoke(
+                FunctionName='cadgpt-onshape-api',
+                InvocationType='RequestResponse',  # synchronous
+                Payload=lambda_payload,
+            )['Payload']
+        )
+        logger.info(f"{log_prefix}: {call_response.get('statusCode')} {call_response.get('body')}")
+    except Exception as e:
+        logger.error(f'{log_prefix}: failed: ', exc_info=True)
+        return
 
 if os.environ['ENV'] == 'dev':
     dotenv.load_dotenv('.env')

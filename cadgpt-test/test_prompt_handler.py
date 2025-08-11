@@ -10,8 +10,8 @@ if __name__ == '__main__':
             'x-api-key': os.environ['PROMPT_HANDLER_API_KEY'] 
         },
         json={ 
-            'prompt': 'a cube with sides of length 10 cm',
-            'doc_id': 'd:c86d2bb9b0b5645b6ef82963:w:c1f073b8750c1e629cd15c6b:e:6299020e04e494c4245b4a9c' 
+            'prompt': 'create a sketch with a circle centered at the origin radius 5 cm then extrude a 10 cm tall cylinder on top of it',
+            'doc_id': 'd:c86d2bb9b0b5645b6ef82963:w:c1f073b8750c1e629cd15c6b:e:527bce9273651f4ec7716746' 
         }
     )
     print(f'Response: {response.status_code} {response.text}')

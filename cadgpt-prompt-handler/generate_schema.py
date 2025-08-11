@@ -6,96 +6,201 @@ import threading
 import copy 
 import math
 
-def remove_circular_refs(ob, _seen=None):
-    if _seen is None:
-        _seen = set()
-    if id(ob) in _seen:
-        # circular reference, remove it.
-        return None
-    _seen.add(id(ob))
-    res = ob
-    if isinstance(ob, dict):
-        res = {
-            remove_circular_refs(k, _seen): remove_circular_refs(v, _seen)
-            for k, v in ob.items()}
-    elif isinstance(ob, (list, tuple, set, frozenset)):
-        res = type(ob)(remove_circular_refs(v, _seen) for v in ob)
-    # remove id again; only *nested* references count
-    _seen.remove(id(ob))
-    return res
-
 def convert_schemas_chunk(raw_schemas, new_schemas, chunk):
     thread_name = threading.current_thread().name
     for i, schema_name in enumerate(chunk):
         if i % 10 == 0:
             print(f'{thread_name} -- {i}/{len(chunk)}')
-        new_schemas[schema_name] = to_json_schema(raw_schemas[chunk[i]])
+        new_schemas[schema_name] = to_json_schema(raw_schemas[chunk[i]], { 'keepNotSupported': [ 'discriminator' ] })
     print(f'{thread_name} -- done')
 
 
 def merge_dicts(a, b):
-    """Recursively merge dictionary b into a."""
     result = copy.deepcopy(a)
     for key, value in b.items():
         if key in result:
             if isinstance(result[key], dict) and isinstance(value, dict):
                 result[key] = merge_dicts(result[key], value)
             elif isinstance(result[key], list) and isinstance(value, list):
-                # Merge lists like "required" or "enum", avoid duplicates
                 result[key] = list(dict.fromkeys(result[key] + value))
             else:
-                # If both values conflict, prefer b
                 result[key] = value
         else:
             result[key] = value
     return result
 
-def flatten_allof(schema):
-    """Recursively flatten allOf entries in a schema dict."""
-    if isinstance(schema, dict):
-        schema = copy.deepcopy(schema)
+def resolve_schema_pointer(root, path):
+    """
+    Return the actual object from root for a JSON Pointer-like path
+    (e.g. '#/components/schemas/MyType' or '/components/schemas/MyType').
+    This returns the object *in* root (no deepcopy) so id() identity is preserved.
+    """
+    # print('resolving pointer:', path)
+    if path.startswith('#'):
+        path = path[1:]
+    # handle leading slash
+    parts = [p for p in path.split('/') if p]
+    ref = root
+    for part in parts:
+        if isinstance(ref, dict) and part in ref:
+            ref = ref[part]
+        else:
+            raise KeyError(f"Could not resolve path {path} at {part}")
+    return ref
 
-        # Flatten children first
-        for key in list(schema.keys()):
-            schema[key] = flatten_allof(schema[key])
+def flatten_schema(root, schema, _seen=None, _memo=None):
+    """
+    Flatten schema (convert discriminator -> oneOf), preventing cycles.
 
-        if "allOf" in schema:
-            merged = {}
-            for sub_schema in schema["allOf"]:
-                flattened_sub = flatten_allof(sub_schema)
-                merged = merge_dicts(merged, flattened_sub)
-            # Merge remainder of schema with flattened result
-            schema.pop("allOf")
-            schema = merge_dicts(merged, schema)
+    Parameters:
+      - root: the full document (so resolve_schema_path can find mappings)
+      - schema: the current schema object (usually a dict, list, or primitive)
+      - _seen: set of seen oids
+      - _memo: dict mapping id(original_obj) -> flattened result (reused)
+    """
 
-    elif isinstance(schema, list):
-        schema = [flatten_allof(item) for item in schema]
+    if not _seen:
+        _seen = set()
 
-    return schema
+    if not _memo:
+        _memo = {}
+
+    if not isinstance(schema, (dict, list)):
+        return schema
+
+    if isinstance(schema, list):
+        return [ flatten_schema(root, item, _seen, _memo) for item in schema ]
+
+    oid = id(schema)
+    # print('oid:', oid, '_memo:', len(list(_memo.keys())))
+    # print(json.dumps(schema, indent=2))
+
+    if oid in _memo:
+        return _memo[oid]
+
+    if oid in _seen:
+        return {}
+
+    _seen.add(oid)
+    out = {}
+
+    for k in list(schema.keys()):
+        if k not in ('allOf', 'discriminator'):
+            out[k] = flatten_schema(root, schema[k], _seen, _memo)
+
+    if 'allOf' in schema:
+        merged = {}
+        out = { 'anyOf': [ out.copy() ] }
+        for sub_schema in schema['allOf']:
+            flat_sub = flatten_schema(root, sub_schema, _seen, _memo)
+            if isinstance(flat_sub, dict):
+                if '$ref' in flat_sub:
+                    out['anyOf'].append({ '$ref': flat_sub['$ref'] })
+                else:
+                    merged = merge_dicts(merged, flat_sub)
+        out['anyOf'].append(merged)
+        # print('allOf:', json.dumps(out, indent=2))
+
+    if 'discriminator' in schema and 'mapping' in schema['discriminator']:
+        if 'anyOf' not in out:
+            out['anyOf'] = []
+        for disc_val, pointer in schema['discriminator']['mapping'].items():
+            out['anyOf'].append({ '$ref': pointer }) 
+        # print('discriminator:', json.dumps(out, indent=2))
+    
+    _memo[oid] = out 
+    return out 
 
 def fix_schema(schema):
-    """Modify schema: add required, restrict additionalProperties, set default array items."""
-    schema = flatten_allof(schema)  # Step 1: Flatten allOf first
+    if isinstance(schema, list):
+        # Fix each item, remove None entries
+        fixed_list = [fix_schema(item) for item in schema]
+        return [item for item in fixed_list if item is not None]
 
     if not isinstance(schema, dict):
         return schema
 
-    if schema.get('type') == 'object':
-        props = schema.get('properties', {})
-        schema['additionalProperties'] = False
-        schema['required'] = list(props.keys())
-        for key in props:
-            props[key] = fix_schema(props[key])
+    # Reref
+    if '$ref' in schema and '$defs' not in schema['$ref']:
+        target = schema['$ref'].split('/')[-1]
+        schema['$ref'] = f'#/$defs/{target}'
 
+    # Remove ignored keys from object properties
+    if schema.get('type') == 'object':
+        properties = schema.get('properties', {})
+        ignore_keys = {
+            'importMicroversion', 'namespace', 'nodeId',
+            'suppressionConfigured', 'suppressionState'
+        }
+        for k in list(properties.keys()):
+            if k in ignore_keys:
+                del properties[k]
+            else:
+                fixed_subschema = fix_schema(properties[k])
+                if fixed_subschema is None:
+                    del properties[k]
+                else:
+                    properties[k] = fixed_subschema
+
+        # Delete this object schema if no properties remain
+        if not properties:
+            return None
+
+        schema['properties'] = properties
+        schema['additionalProperties'] = False
+        schema['required'] = list(properties.keys())
+
+    # Fix arrays
     elif schema.get('type') == 'array':
-        if not schema.get('items'):
+        if 'uniqueItems' in schema:
+            del schema['uniqueItems']
+        if 'items' not in schema or schema['items'] is None:
             schema['items'] = { '$ref': '#/$defs/feature' }
-        elif isinstance(schema['items'], list):
-            schema['items'] = [fix_schema(item) for item in schema['items']]
         else:
-            schema['items'] = fix_schema(schema['items'])
+            fixed_items = fix_schema(schema['items'])
+            if fixed_items is None:
+                del schema['items']
+            else:
+                schema['items'] = fixed_items
+
+    # Keys expected to contain schemas
+    schema_keys = {'allOf', 'anyOf', 'oneOf', '$defs', 'definitions', 'properties', 'items'}
+
+    # Recursively fix nested schemas or schema arrays in other keys
+    for k, v in list(schema.items()):
+        if k in schema_keys:
+            fixed_sub = fix_schema(v)
+            if fixed_sub is None:
+                del schema[k]
+            else:
+                schema[k] = fixed_sub
+        elif k not in {'required', 'type', 'additionalProperties'}:
+            fixed_sub = fix_schema(v)
+            if fixed_sub is None:
+                del schema[k]
+            else:
+                schema[k] = fixed_sub
+
+    # Edge cases
+    if schema.get('type') == 'number' and 'format' in schema:
+        del schema['format']
 
     return schema
+
+def find_relevant_schemas(root, schema, out):
+    if isinstance(schema, list):
+        for item in schema:
+            find_relevant_schemas(root, item, out)
+    elif isinstance(schema, dict):
+        for k, v in schema.items():
+            find_relevant_schemas(root, v, out)
+    elif isinstance(schema, str):
+        if schema.startswith('#'):
+            ref_name = schema.split('/')[-1]
+            if not ref_name in out:
+                out.add(ref_name)
+                ref_schema = resolve_schema_pointer(root, schema)
+                find_relevant_schemas(root, ref_schema, out)
 
 if __name__ == '__main__':
     if not os.path.exists('llm_static/resolved_schemas.json'):
@@ -122,30 +227,32 @@ if __name__ == '__main__':
 
         jsonschema_json = copy.deepcopy(openapi_json)
         jsonschema_json['components']['schemas'] = new_schemas
-        inlined = jsonref.replace_refs(
-            obj=jsonschema_json,
-            jsonschema=True,
-            proxies=False,
-            merge_props=True,
-            lazy_load=False
-        )
 
         with open('llm_static/resolved_schemas.json', 'w') as out_file:
-            jsonref.dump(remove_circular_refs(inlined), out_file)
+            jsonref.dump(jsonschema_json, out_file)
+            print('resolved_schemas.json created')
  
     with open('llm_static/final_schema_template.json', 'r') as template_file, \
         open('llm_static/resolved_schemas.json', 'r') as schemas_file:
-
-        schemas = json.load(schemas_file)['components']['schemas']
+        root = json.load(schemas_file)
+        print('resolved_schemas.json loaded')
         final_schema = json.load(template_file)
-    
-    include_schemas = [ 'BTMFeature-134', 'BTMSketch-151' ]
+        print('final_schema_template.json loaded')
+
+    print('Finding relevant schemas')
+    relevant_schema_names = set()
+    find_relevant_schemas(root, root['components']['schemas']['BTMFeature-134'], relevant_schema_names)
+    print(f'Relevant schemas ({len(relevant_schema_names)}):', relevant_schema_names)
 
     with open(f'llm_static/final_schema.json', 'w') as out_file:
-        for schema_name in include_schemas:
-            inc_schema = schemas[schema_name]
-            inc_schema['properties']['btType'] = { 'type': 'string', 'const': schema_name } 
-            fixed = fix_schema(inc_schema)
-            final_schema['$defs']['feature']['anyOf'].append(fixed) 
-        
-        json.dump(final_schema, out_file, indent=2)
+        for schema_name in relevant_schema_names:
+            schema = root['components']['schemas'][schema_name]
+            refactored_schema = flatten_schema(root, schema)
+            refactored_schema = fix_schema(refactored_schema)
+            final_schema['$defs'][schema_name] = refactored_schema
+
+        # More edge cases
+        final_schema['$defs']['Lines'] = { 'type': 'array', 'items': { 'type': 'string' } }
+
+        json.dump(final_schema, out_file)
+        print('final_schema.json created')
