@@ -82,10 +82,11 @@ def flatten_schema(root, schema, _seen=None, _memo=None):
         return {}
 
     _seen.add(oid)
-    out = {}
 
-    for k in list(schema.keys()):
-        if k not in ('allOf', 'discriminator'):
+    out = {}
+    base_keys = [ k for k in list(schema.keys()) if k not in  [ 'allOf', 'discriminator' ] ]
+    if len(base_keys) > 0:
+        for k in base_keys:
             out[k] = flatten_schema(root, schema[k], _seen, _memo)
 
     if 'allOf' in schema:
@@ -98,12 +99,13 @@ def flatten_schema(root, schema, _seen=None, _memo=None):
                     out['anyOf'].append({ '$ref': flat_sub['$ref'] })
                 else:
                     merged = merge_dicts(merged, flat_sub)
-        out['anyOf'].append(merged)
+        out = merge_dicts(out, merged)
+        # print(list(out.get('properties', {}.keys())))
         # print('allOf:', json.dumps(out, indent=2))
 
     if 'discriminator' in schema and 'mapping' in schema['discriminator']:
         if 'anyOf' not in out:
-            out['anyOf'] = []
+            out = { 'anyOf': [ out.copy() ] }
         for disc_val, pointer in schema['discriminator']['mapping'].items():
             out['anyOf'].append({ '$ref': pointer }) 
         # print('discriminator:', json.dumps(out, indent=2))
@@ -111,11 +113,11 @@ def flatten_schema(root, schema, _seen=None, _memo=None):
     _memo[oid] = out 
     return out 
 
-def fix_schema(schema):
+def fix_schema(schema, schema_name=None, depth=0):
     if isinstance(schema, list):
         # Fix each item, remove None entries
-        fixed_list = [fix_schema(item) for item in schema]
-        return [item for item in fixed_list if item is not None]
+        fixed_list = [ fix_schema(item, schema_name, depth+1) for item in schema ]
+        return [ item for item in fixed_list if item is not None ]
 
     if not isinstance(schema, dict):
         return schema
@@ -149,6 +151,9 @@ def fix_schema(schema):
         schema['properties'] = properties
         schema['additionalProperties'] = False
         schema['required'] = list(properties.keys())
+       
+        # if depth <= 2 and schema_name is not None and 'btType' in schema['required']:
+        #     schema['properties']['btType'] = { 'type': 'string', 'const': schema_name }
 
     # Fix arrays
     elif schema.get('type') == 'array':
@@ -163,26 +168,24 @@ def fix_schema(schema):
             else:
                 schema['items'] = fixed_items
 
-    # Keys expected to contain schemas
-    schema_keys = {'allOf', 'anyOf', 'oneOf', '$defs', 'definitions', 'properties', 'items'}
-
     # Recursively fix nested schemas or schema arrays in other keys
+    schema_keys = {'allOf', 'anyOf', 'oneOf', '$defs', 'definitions', 'properties', 'items'}
     for k, v in list(schema.items()):
         if k in schema_keys:
-            fixed_sub = fix_schema(v)
+            fixed_sub = fix_schema(v, schema_name, depth+1)
             if fixed_sub is None:
                 del schema[k]
             else:
                 schema[k] = fixed_sub
         elif k not in {'required', 'type', 'additionalProperties'}:
-            fixed_sub = fix_schema(v)
+            fixed_sub = fix_schema(v, schema_name, depth+1)
             if fixed_sub is None:
                 del schema[k]
             else:
                 schema[k] = fixed_sub
 
     # Edge cases
-    if schema.get('type') == 'number' and 'format' in schema:
+    if schema.get('type') in [ 'number', 'string' ] and 'format' in schema:
         del schema['format']
 
     return schema
@@ -248,7 +251,7 @@ if __name__ == '__main__':
         for schema_name in relevant_schema_names:
             schema = root['components']['schemas'][schema_name]
             refactored_schema = flatten_schema(root, schema)
-            refactored_schema = fix_schema(refactored_schema)
+            refactored_schema = fix_schema(refactored_schema, schema_name)
             final_schema['$defs'][schema_name] = refactored_schema
 
         # More edge cases

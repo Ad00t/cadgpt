@@ -25,10 +25,6 @@ openai_client: OpenAI | None = None
 vector_store: QdrantClient | None = None
 doc_db: Database | None = None
 
-llm_static_context: str | None = None
-feature_list_detailed_schema: dict | None = None
-feature_definition_detailed_schema: dict | None = None
-
 def lambda_handler(event, context):
     log_prefix = f'lambda_handler()'
     logger.info(f'{log_prefix} {json.dumps(event)} {context}')
@@ -48,12 +44,14 @@ def lambda_handler(event, context):
         logger.error(f'{log_prefix}: prompt error: ', exc_info=True)
         return { 'statusCode': 400, 'body': json.dumps({ 'message': 'bad prompt' }) }
 
-    generate_static_context()
-    full_context = generate_full_rag_context(prompt=prompt)
-    llm_response = generate_llm_response(context=full_context, prompt=prompt, doc_id=doc_id)
+    if os.environ['SLOW_START'].lower() == 'true':
+        onshape_doc_search(prompt=prompt)
+
+    rag_context = generate_rag_context(prompt=prompt)
+    generate_llm_response(rag_context=rag_context, prompt=prompt, doc_id=doc_id)
     
     logger.info(f'{log_prefix}: done')
-    return { 'statusCode': 200, 'body': json.dumps(llm_response) }
+    return { 'statusCode': 200, 'body': json.dumps({ 'message': 'done' }) }
 
 def init_clients():
     log_prefix = f'init_clients()'
@@ -86,30 +84,28 @@ def init_clients():
     )[os.environ['DOC_DB_NAME']]  
     logger.info(f'{log_prefix}: {doc_db.name} initialized')
 
-def generate_static_context():
-    log_prefix = f'generate_static_context()'
-    global llm_static_context, feature_list_detailed_schema, feature_definition_detailed_schema
-    if not (llm_static_context is None or feature_list_detailed_schema is None or feature_definition_detailed_schema is None):
-        logger.info(f'{log_prefix}: static context already exists')
-        return
-
-    with open('llm_static/llm_instructions.txt') as instr_txt:
-        llm_static_context = instr_txt.read()
-
-    with open('llm_static/features_api_doc.txt') as api_doc_txt:
-        llm_static_context = llm_static_context.replace('${features_api_doc.txt}', api_doc_txt.read())
-
-
-def generate_full_rag_context(prompt) -> str:
-    log_prefix = f'generate_full_rag_context()'
+def onshape_doc_search(prompt):
+    log_prefix = f'onshape_doc_search()'
     try:
-        global openai_client, vector_store, llm_static_context
-        if llm_static_context is None:
-            logger.error(f'{log_prefix}: llm_static_context not initialized')
-            return '' 
+        lambda_client.invoke(
+            FunctionName='cadgpt-onshape-doc-search',
+            InvocationType='Event', # Asynchronous
+            Payload=json.dumps({
+                'query': prompt,
+                'n_docs': 20
+            })
+        )
+        logger.info(f'{log_prefix}: lambda invoked')
+    except Exception as e:
+        logger.error(f'{log_prefix}: failed: ', exc_info=True)
+
+def generate_rag_context(prompt) -> str:
+    log_prefix = f'generate_rag_context()'
+    try:
+        global openai_client, vector_store
         if openai_client is None or vector_store is None or doc_db is None:
             logger.error(f'{log_prefix}: clients not initialized {str(openai_client)} {str(vector_store)} {str(doc_db)}')
-            return llm_static_context
+            return ''
 
         prompt_vec = openai_client.embeddings.create(
             input=prompt,
@@ -121,35 +117,48 @@ def generate_full_rag_context(prompt) -> str:
             query_vector=prompt_vec,
             limit=int(os.environ['MAX_CONTEXT_EXAMPLES'])
         )
-        logger.info(f'{log_prefix}: RAG result:\n\n{search_result}')
+        logger.info(f'{log_prefix}: {len(search_result)} docs found\n{json.dumps([ f"{p.id} -- {p.payload['name']}" for p in search_result ])}')
         
-        examples_text = ''
+        rag_context = ''
         for i, rag_point in enumerate(search_result):
             try:
-                if rag_point.payload is None:
-                    logger.error(f'{log_prefix}: rag_point has no payload: {rag_point}')
-                    continue
-                rag_doc = doc_db['docs'].find_one({ '__id': rag_point.payload['doc_id'] })
-                examples_text += f'### EXAMPLE {i+1}\n\n{rag_doc}\n\n'
+                logger.debug(f'{log_prefix}: RAG point {i}:\n\n{rag_point}')
+                rag_doc = doc_db['docs'].find_one({ '__id': rag_point.id })
+                rag_context += f'### EXAMPLE {i+1}\n\n{rag_doc}\n\n'
             except Exception as e:
                 logger.error(f'{log_prefix}: RAG document retrieval failed: ', exc_info=True)
-        llm_full_context = llm_static_context.replace('${feature_list_examples}', examples_text)
-        return llm_full_context
+        return rag_context
     except Exception as e:
         logger.error(f'{log_prefix}: failed: ', exc_info=True)
     return ''
 
-def generate_llm_response(context, prompt, doc_id):
+def generate_llm_response(rag_context, prompt, doc_id):
     log_prefix = f'generate_llm_response()'
     if openai_client is None:
         return []
+
+    with open('llm_static/instructions_template.txt') as template_file, \
+        open('llm_static/features_api_doc.txt') as api_doc_file:
+        template = template_file.read()
+        api_doc =  api_doc_file.read()
+
+    instructions = template.format(
+        api_doc=api_doc,
+        rag_context=rag_context
+    )
+
+    logger.info(f'{log_prefix}: context: ~{len(instructions.split(' '))} tokens')
+    logger.debug(f'{log_prefix}: {instructions}')
 
     with open('llm_static/final_schema.json') as in_file:
         schema = json.load(in_file)
         logger.debug(f'{log_prefix}: schema loaded:\n\n{json.dumps(schema)}')
 
-    logger.info(f'{log_prefix}: context: ~{len(context.split(' '))} tokens')
-    logger.debug(f'{log_prefix}: {context}')
+    input_list = [
+        { 'role': 'developer', 'content': instructions },
+        { 'role': 'developer', 'content': '' },
+        { 'role': 'developer', 'content': f'Generate the next feature object in this design given the user prompt: {prompt}' }
+    ]
 
     for step in range(int(os.environ['MAX_FEATURES'])):
         try:
@@ -164,16 +173,19 @@ def generate_llm_response(context, prompt, doc_id):
                         }
                     }),
                 )['Payload']
-            )['body'])['features']
+            )['body'])
+
+            if 'features' not in curr_features:
+                logger.error(f'{log_prefix}: current features retrieval failed: {json.dumps(curr_features)}')
+                break
+
             logger.debug(f'{log_prefix}: curr features: {json.dumps(curr_features)}')
+            input_list[1]['content'] = f'# EXISTING PARTSTUDIO FEATURES\n\n{json.dumps(curr_features)}\n\n'
         
+            logger.debug(f'{log_prefix}: input list: {json.dumps(input_list)}')
             response = openai_client.responses.create(
-                model=os.environ['OPENAI_LLM'],
-                input=[
-                    { 'role': 'system', 'content': context },
-                    { 'role': 'user', 'content': f'Existing features:\n\n{json.dumps(curr_features, indent=4)}\n' },
-                    { 'role': 'user', 'content': f'Generate the next feature object in this design given the user prompt: {prompt}' }
-                ],
+                model=os.environ['LLM'],
+                input=input_list,
                 text={
                     'format': {
                         'type': 'json_schema',
@@ -184,10 +196,13 @@ def generate_llm_response(context, prompt, doc_id):
                 }
             )
             
+            input_list.append({ 'role': 'assistant', 'content': response.output_text })
             response_json = json.loads(response.output_text)
             if response_json['metadata']['done']:
                 break
-            handle_llm_response(response_json, doc_id, step)
+
+            onshape_res = handle_llm_response(response_json, doc_id, step)
+            input_list.append({ 'role': 'developer', 'content': f'Onshape response: {json.dumps(onshape_res)}' })
         except Exception as e:
             logger.error(f'{log_prefix}: failed: ', exc_info=True)
             break
@@ -212,26 +227,26 @@ def handle_llm_response(response_json, doc_id, step):
             case 'update_feature':
                 onshape_payload.update({
                     'feature': response_json['feature'],
-                    'feature_id': response_json['feature']['feature_id']
+                    'feature_id': response_json['feature']['featureId']
                 })
             case 'delete_feature':
                 onshape_payload.update({
-                    'feature_id': response_json['feature']['feature_id']
+                    'feature_id': response_json['feature']['featureId']
                 })
         
         lambda_payload = json.dumps({
             'endpoint': call_type,
             'payload': onshape_payload
         })
-        logger.info(f'{log_prefix}: {lambda_payload}')
-        call_response = json.load(
+        onshape_res = json.load(
             lambda_client.invoke(
                 FunctionName='cadgpt-onshape-api',
                 InvocationType='RequestResponse',  # synchronous
                 Payload=lambda_payload,
             )['Payload']
         )
-        logger.info(f"{log_prefix}: {call_response.get('statusCode')} {call_response.get('body')}")
+        logger.info(f"{log_prefix}: onshape res: {onshape_res.get('statusCode')} {onshape_res.get('body')}")
+        return onshape_res
     except Exception as e:
         logger.error(f'{log_prefix}: failed: ', exc_info=True)
         return

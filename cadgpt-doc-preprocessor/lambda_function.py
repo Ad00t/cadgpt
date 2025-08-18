@@ -20,7 +20,7 @@ if os.environ['ENV'] == 'dev':
     handler.setFormatter(formatter)
     logger.addHandler(handler)
 
-s3 = boto3.client('s3')
+lambda_client = boto3.client('lambda')
 ssm = boto3.client('ssm')
 
 openai_client: OpenAI | None = None
@@ -36,49 +36,38 @@ def lambda_handler(event, context):
         logger.error(f'{log_prefix}: clients not initialized {str(openai_client)} {str(vector_store)} {str(doc_db)}')
         return { 'statusCode': 500, 'body': json.dumps({ 'message': 'clients not initialized' })}
 
-    raw_obj = retrieve_s3_object(event)
+    try:
+        doc = event['doc']
+        doc_id = doc['doc_id']
+        doc_name = doc['doc_name'].strip()
+        new_id = str(uuid.uuid4()) 
 
-    # TODO: input validation
-    # TODO: enforce atomicity of all operations
+        if (check_doc_id_exists(doc_id)):
+            logger.info(f'{log_prefix}: doc {doc_id} already exists')
+            return { 'statusCode': 400, 'body': json.dumps({ 'message': 'doc already exists' }) }
 
-    for obj in raw_obj:
-        try:
-            doc = f'Name: {obj.get('name', '')}'
-            doc_id = obj['id']
-            vs_id = str(uuid.uuid4()) 
+        features = get_features(doc_id)
+        if len(features) == 0:
+            logger.info(f'{log_prefix}: no features found for doc {doc_id}')
+            return { 'statusCode': 400, 'body': json.dumps({ 'message': 'empty features list' }) }
 
-            doc_vec = openai_client.embeddings.create(
-                input=doc,
-                model=os.environ['EMBEDDING_MODEL']
-            ).data[0].embedding
+        for feature in features:
+            if feature['featureType'] == 'importForeign':
+                logger.info(f'{log_prefix}: skipping, import detected in doc {doc_id}')
+                return { 'statusCode': 400, 'body': json.dumps({ 'message': 'import detected' }) }
 
-            point = PointStruct(
-                id=vs_id,
-                vector=doc_vec,
-                payload={
-                    'doc_id': doc_id,
-                    'type': 'partstudio_features' 
-                }
-            )
+        desc = generate_desc(doc_name, features)
 
-            vector_store_response = vector_store.upsert(
-                collection_name='docs',
-                wait=True,
-                points=[ point ]
-            )
-            logger.info(f'{log_prefix}: vector_store response: {vector_store_response}')
+        metadata = {
+            'doc_id': doc_id,
+            'name': doc_name,
+            'desc': desc,
+            'type': 'partstudio.features' 
+        }
 
-            doc_db_response = doc_db['docs'].insert_one({
-                '__id': doc_id,
-                'metadata': {
-                    'vs_id': vs_id,
-                    'type': 'partstudio_features'
-                },
-                'features': obj.get('features', {})
-            })
-            logger.info(f'{log_prefix}: doc_db response: {doc_db_response}')
-        except Exception as e:
-            logger.error(f'{log_prefix}: processing doc {obj.get('id', 'NO_ID')} failed: ', exc_info=True)
+        insert_dbs(new_id, desc, metadata, features)
+    except Exception as e:
+        logger.error(f'{log_prefix}: failed:', exc_info=True)
        
     logger.info(f'{log_prefix}: done')
     return { 'statusCode': 200, 'body': json.dumps({ 'message': 'success' }) }
@@ -114,21 +103,78 @@ def init_clients():
     )[os.environ['DOC_DB_NAME']]      
     logger.info(f'{log_prefix}: {doc_db.name} initialized')
 
-def retrieve_s3_object(event) -> list:
-    log_prefix = f'retrieve_s3_object()'
-    try:
-        record = event['Records'][0]
-        bucket_name = record['s3']['bucket']['name']
-        key = record['s3']['object']['key']
-        logger.info(f'{log_prefix}: {bucket_name}/{key} {event}') 
+def get_features(doc_id):
+    features_obj = json.loads(json.load(
+        lambda_client.invoke(
+            FunctionName='cadgpt-onshape-api',
+            InvocationType='RequestResponse',  # Synchronous
+            Payload=json.dumps({
+                'endpoint': 'get_features',
+                'payload': {
+                    'doc_id': doc_id,
+                }
+            }),
+        )['Payload']
+    )['body'])
+    features = features_obj.get('features', [])
+    return features
 
-        response = s3.get_object(Bucket=bucket_name, Key=key)
-        content = response['Body'].read().decode('utf-8')
-        logger.info(f'{log_prefix}: success')
-        return json.loads(content)
-    except Exception as e:
-        logger.error(f'{log_prefix} failed:', exc_info=True)
-    return []
+def generate_desc(doc_name, features):
+    log_prefix = f'generate_desc()'
+
+    with open('llm_static/instructions_template.txt', 'r') as template_file:
+        template = template_file.read()
+    
+    instructions = template.format(
+        doc_name=doc_name,
+        features=json.dumps(features)
+    )
+
+    response = openai_client.responses.create(
+        model=os.environ['LLM'],
+        reasoning={ "effort": "medium" },
+        input=[
+            { 'role': 'developer', 'content': instructions }
+        ]
+    )
+
+    desc = f"{response.output_text}"
+    logger.info(f'{log_prefix}: {desc}')
+    return desc
+
+def check_doc_id_exists(doc_id):
+    log_prefix = f'check_doc_id_exists()'
+    doc = doc_db['docs'].find_one({ 'metadata.doc_id': doc_id })
+    logger.info(f'{log_prefix}: {doc}')
+    return doc is not None
+
+def insert_dbs(new_id, desc, metadata, features):
+    log_prefix = f'insert_dbs()'
+
+    desc_vec = openai_client.embeddings.create(
+        input=desc,
+        model=os.environ['EMBEDDING_MODEL']
+    ).data[0].embedding
+
+    point = PointStruct(
+        id=new_id,
+        vector=desc_vec,
+        payload=metadata
+    )
+
+    vs_response = vector_store.upsert(
+        collection_name='docs',
+        wait=True,
+        points=[ point ]
+    )
+    logger.info(f'{log_prefix}: vs response: {vs_response}')
+
+    ddb_response = doc_db['docs'].insert_one({
+        '__id': new_id,
+        'metadata': metadata,
+        'features': features
+    })
+    logger.info(f'{log_prefix}: ddb response: {ddb_response}')
 
 if os.environ['ENV'] == 'dev':
     dotenv.load_dotenv('.env')

@@ -30,6 +30,9 @@ def lambda_handler(event, context):
     
     authenticate()
 
+    if 'doc_id' in event['payload']:
+        event['payload']['doc_url'] = event['payload']['doc_id'].replace('.', '/')
+
     match event['endpoint']:
         case 'search_docs':
             return make_request(event, 
@@ -54,7 +57,7 @@ def lambda_handler(event, context):
         case 'get_features':
             return make_request(event,
                 lambda payload: requests.get(
-                    f"{os.environ['URL_BASE']}/partstudios/{payload['doc_id'].replace(':', '/')}/features",
+                    f"{os.environ['URL_BASE']}/partstudios/{payload['doc_url']}/features",
                     headers=headers,
                     params={
                         'rollbackBarIndex': -1,
@@ -66,7 +69,7 @@ def lambda_handler(event, context):
         case 'add_feature':
             return make_request(event,
                 lambda payload: requests.post(
-                    f"{os.environ['URL_BASE']}/partstudios/{payload['doc_id'].replace(':', '/')}/features",
+                    f"{os.environ['URL_BASE']}/partstudios/{payload['doc_url']}/features",
                     headers=headers,
                     json={
                         'btType': 'BTFeatureDefinitionCall-1406',
@@ -77,7 +80,7 @@ def lambda_handler(event, context):
         case 'update_feature':
             return make_request(event,
                 lambda payload: requests.post(
-                    f"{os.environ['URL_BASE']}/partstudios/{payload['doc_id'].replace(':', '/')}/features/featureid/{payload['feature_id']}",
+                    f"{os.environ['URL_BASE']}/partstudios/{payload['doc_url']}/features/featureid/{payload['feature_id']}",
                     headers=headers,
                     json={
                         'btType': 'BTFeatureDefinitionCall-1406',
@@ -88,7 +91,7 @@ def lambda_handler(event, context):
         case 'delete_feature':
             return make_request(event,
                 lambda payload: requests.delete(
-                    f"{os.environ['URL_BASE']}/partstudios/{payload['doc_id'].replace(':', '/')}/features/featureid/{payload['feature_id']}",
+                    f"{os.environ['URL_BASE']}/partstudios/{payload['doc_url']}/features/featureid/{payload['feature_id']}",
                     headers=headers
                 )
             )
@@ -117,7 +120,7 @@ def make_request(event, request_func):
     try:
         response = request_func(payload)
         logger.info(f'{log_prefix}: {response.status_code}')
-        logger.debug(f'{log_prefix}: {response.text}')
+        logger.debug(f'{log_prefix}: {json.dumps({ 'headers': dict(response.headers), 'text': response.text })}')
         return { 'statusCode': response.status_code, 'body': response.text }
     except Exception as e:
         logger.error(f'{log_prefix} failed:', exc_info=True)
