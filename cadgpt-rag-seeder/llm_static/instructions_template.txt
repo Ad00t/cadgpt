@@ -1,0 +1,11 @@
+Generate a line-separated list of {n_queries} simple part descriptions that are suitable to query the OnShape public document database with.
+
+Do not include any additional characters, numbering, formatting, filler text, quotation marks, etc. Just respond with a line-separated list of part descriptions.
+
+These should be very short, broad-scope labels for generic parts found in industries that use CAD. 
+
+Include dimensions and additional spec details in 50% of descriptions, and leave the other 50% with less information / more plain descriptions.
+
+Examples are given below:
+
+{query_examples}

@@ -2,7 +2,7 @@
 set -e
 
 DIRECTORY="$(pwd)"
-LAMBDA_NAME="cadgpt-doc-preprocessor"
+LAMBDA_NAME="cadgpt-rag-seeder"
 BUCKET="cadgpt-lambdas"
 LAYER_ZIP="${LAMBDA_NAME}_layer-python.zip"
 LAMBDA_ZIP="${LAMBDA_NAME}_lambda.zip"
@@ -25,7 +25,7 @@ zip -r9 "../layers/${LAYER_ZIP}" .
 cd ..
 rm -rf "${BUILD_DIR}"
 
-zip -r9 "${LAMBDA_ZIP}" "lambda_function.py" "global-bundle.pem" "llm_statc/instructions_template.txt"  
+zip -r9 "${LAMBDA_ZIP}" "lambda_function.py" "llm_static/instructions_template.txt" "llm_static/query_examples.txt" 
 
 aws s3 cp "${LAMBDA_ZIP}" "s3://${BUCKET}/${LAMBDA_ZIP}"
 aws s3 cp "layers/${LAYER_ZIP}" "s3://${BUCKET}/layers/${LAYER_ZIP}"

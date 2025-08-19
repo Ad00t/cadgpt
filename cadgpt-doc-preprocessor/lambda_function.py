@@ -33,7 +33,7 @@ def lambda_handler(event, context):
 
     init_clients()
     if openai_client is None or vector_store is None or doc_db is None:
-        logger.error(f'{log_prefix}: clients not initialized {str(openai_client)} {str(vector_store)} {str(doc_db)}')
+        logger.error(f'{log_prefix}: clients not initialized')
         return { 'statusCode': 500, 'body': json.dumps({ 'message': 'clients not initialized' })}
 
     try:
@@ -57,12 +57,15 @@ def lambda_handler(event, context):
                 return { 'statusCode': 400, 'body': json.dumps({ 'message': 'import detected' }) }
 
         desc = generate_desc(doc_name, features)
+        if desc is None:
+            logger.info(f'{log_prefix}: failed to generate desc for doc {doc_id}')
+            return { 'statusCode': 500, 'body': json.dumps({ 'message': 'failed to generate desc' }) }
 
         metadata = {
             'doc_id': doc_id,
             'name': doc_name,
             'desc': desc,
-            'type': 'partstudio.features' 
+            'collection': 'partstudio_features'
         }
 
         insert_dbs(new_id, desc, metadata, features)
@@ -82,7 +85,6 @@ def init_clients():
     os.environ['OPENAI_API_KEY'] = ssm.get_parameter(Name='OPENAI_API_KEY', WithDecryption=True)['Parameter']['Value']
     os.environ['QDRANT_API_KEY'] = ssm.get_parameter(Name='QDRANT_API_KEY', WithDecryption=True)['Parameter']['Value']
     os.environ['CADGPT_DOC_DB_PASS'] = ssm.get_parameter(Name='CADGPT_DOC_DB_PASS', WithDecryption=True)['Parameter']['Value'] 
-
     logger.info(f'{log_prefix}: credentials retrieved')
 
     openai_client = OpenAI(
@@ -122,6 +124,8 @@ def get_features(doc_id):
 def generate_desc(doc_name, features):
     log_prefix = f'generate_desc()'
 
+    global openai_client
+
     with open('llm_static/instructions_template.txt', 'r') as template_file:
         template = template_file.read()
     
@@ -132,7 +136,6 @@ def generate_desc(doc_name, features):
 
     response = openai_client.responses.create(
         model=os.environ['LLM'],
-        reasoning={ "effort": "medium" },
         input=[
             { 'role': 'developer', 'content': instructions }
         ]
@@ -163,13 +166,13 @@ def insert_dbs(new_id, desc, metadata, features):
     )
 
     vs_response = vector_store.upsert(
-        collection_name='docs',
+        collection_name=metadata['collection'],
         wait=True,
         points=[ point ]
     )
     logger.info(f'{log_prefix}: vs response: {vs_response}')
 
-    ddb_response = doc_db['docs'].insert_one({
+    ddb_response = doc_db[metadata['collection']].insert_one({
         '__id': new_id,
         'metadata': metadata,
         'features': features
