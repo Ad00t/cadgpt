@@ -160,7 +160,7 @@ def generate_llm_response(rag_context, prompt, doc_id):
         { 'role': 'developer', 'content': f'Generate the next feature object in this design given the user prompt: {prompt}' }
     ]
 
-    for step in range(int(os.environ['MAX_FEATURES'])):
+    for step in range(int(os.environ['MAX_STEPS'])):
         try:
             curr_features = json.loads(json.load(
                 lambda_client.invoke(
@@ -185,7 +185,7 @@ def generate_llm_response(rag_context, prompt, doc_id):
             logger.debug(f'{log_prefix}: input list: {json.dumps(input_list)}')
             response = openai_client.responses.create(
                 model=os.environ['LLM'],
-                input=input_list,
+                input=input_list, # type: ignore
                 text={
                     'format': {
                         'type': 'json_schema',
