@@ -53,9 +53,8 @@ def init_clients():
 
 def generate_queries(n_queries):
     log_prefix = f'generate_desc()'
-    logger.info(f'{log_prefix}: llm: {os.environ['LLM']}')
-
     global openai_client
+    logger.info(f'{log_prefix}: llm: {os.environ['LLM']}')
 
     with open('llm_static/instructions_template.txt', 'r') as template_file, \
          open('llm_static/query_examples.txt', 'r') as examples_file:

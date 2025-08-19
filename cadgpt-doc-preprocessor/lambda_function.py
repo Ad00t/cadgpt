@@ -123,8 +123,8 @@ def get_features(doc_id):
 
 def generate_desc(doc_name, features):
     log_prefix = f'generate_desc()'
-
     global openai_client
+    logger.info(f"{log_prefix}: llm: {os.environ['LLM']}")
 
     with open('llm_static/instructions_template.txt', 'r') as template_file:
         template = template_file.read()
@@ -147,12 +147,14 @@ def generate_desc(doc_name, features):
 
 def check_doc_id_exists(doc_id):
     log_prefix = f'check_doc_id_exists()'
+    global doc_db
     doc = doc_db['docs'].find_one({ 'metadata.doc_id': doc_id })
     logger.info(f'{log_prefix}: {doc}')
     return doc is not None
 
 def insert_dbs(new_id, desc, metadata, features):
     log_prefix = f'insert_dbs()'
+    global vector_store, doc_db
 
     desc_vec = openai_client.embeddings.create(
         input=desc,

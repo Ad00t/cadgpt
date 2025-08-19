@@ -1,4 +1,5 @@
 import json
+import time
 import logging
 import boto3
 import os
@@ -31,7 +32,7 @@ def lambda_handler(event, context):
 
     init_clients()
     if openai_client is None or vector_store is None or doc_db is None:
-        logger.error(f'{log_prefix}: clients not initialized {str(openai_client)} {str(vector_store)} {str(doc_db)}')
+        logger.error(f'{log_prefix}: clients not initialized')
         return { 'statusCode': 500, 'body': json.dumps({ 'message': 'clients not initialized' })}
 
     try:
@@ -45,7 +46,7 @@ def lambda_handler(event, context):
         return { 'statusCode': 400, 'body': json.dumps({ 'message': 'bad prompt' }) }
 
     if os.environ['SLOW_START'].lower() == 'true':
-        onshape_doc_search(prompt=prompt)
+        onshape_doc_search(prompt)
 
     rag_context = generate_rag_context(prompt=prompt)
     generate_llm_response(rag_context=rag_context, prompt=prompt, doc_id=doc_id)
@@ -84,36 +85,33 @@ def init_clients():
     )[os.environ['DOC_DB_NAME']]  
     logger.info(f'{log_prefix}: {doc_db.name} initialized')
 
-def onshape_doc_search(prompt):
+def onshape_doc_search(query):
     log_prefix = f'onshape_doc_search()'
     try:
+        payload = json.dumps({
+            'query': query,
+            'n_docs': os.environ['N_DOCS_PER_QUERY'] 
+        })
         lambda_client.invoke(
             FunctionName='cadgpt-onshape-doc-search',
             InvocationType='Event', # Asynchronous
-            Payload=json.dumps({
-                'query': prompt,
-                'n_docs': 20
-            })
+            Payload=payload
         )
-        logger.info(f'{log_prefix}: lambda invoked')
+        logger.info(f'{log_prefix}: lambda invoked -- {payload}')
     except Exception as e:
         logger.error(f'{log_prefix}: failed: ', exc_info=True)
 
 def generate_rag_context(prompt) -> str:
     log_prefix = f'generate_rag_context()'
+    global openai_client, vector_store, doc_db
     try:
-        global openai_client, vector_store
-        if openai_client is None or vector_store is None or doc_db is None:
-            logger.error(f'{log_prefix}: clients not initialized {str(openai_client)} {str(vector_store)} {str(doc_db)}')
-            return ''
-
         prompt_vec = openai_client.embeddings.create(
             input=prompt,
             model=os.environ['EMBEDDING_MODEL']
         ).data[0].embedding
 
         search_result = vector_store.search(
-            collection_name='docs',
+            collection_name='partstudio_features',
             query_vector=prompt_vec,
             limit=int(os.environ['MAX_CONTEXT_EXAMPLES'])
         )
@@ -123,7 +121,7 @@ def generate_rag_context(prompt) -> str:
         for i, rag_point in enumerate(search_result):
             try:
                 logger.debug(f'{log_prefix}: RAG point {i}:\n\n{rag_point}')
-                rag_doc = doc_db['docs'].find_one({ '__id': rag_point.id })
+                rag_doc = doc_db['partstudio_features'].find_one({ '__id': rag_point.id })
                 rag_context += f'### EXAMPLE {i+1}\n\n{rag_doc}\n\n'
             except Exception as e:
                 logger.error(f'{log_prefix}: RAG document retrieval failed: ', exc_info=True)
@@ -134,11 +132,11 @@ def generate_rag_context(prompt) -> str:
 
 def generate_llm_response(rag_context, prompt, doc_id):
     log_prefix = f'generate_llm_response()'
-    if openai_client is None:
-        return []
+    global openai_client
+    logger.info(f"{log_prefix}: llm: {os.environ['LLM']}")
 
     with open('llm_static/instructions_template.txt') as template_file, \
-        open('llm_static/features_api_doc.txt') as api_doc_file:
+         open('llm_static/features_api_doc.txt') as api_doc_file:
         template = template_file.read()
         api_doc =  api_doc_file.read()
 
@@ -160,6 +158,7 @@ def generate_llm_response(rag_context, prompt, doc_id):
         { 'role': 'developer', 'content': f'Generate the next feature object in this design given the user prompt: {prompt}' }
     ]
 
+    start_ts = time.time()
     for step in range(int(os.environ['MAX_STEPS'])):
         try:
             curr_features = json.loads(json.load(
@@ -181,8 +180,9 @@ def generate_llm_response(rag_context, prompt, doc_id):
 
             logger.debug(f'{log_prefix}: curr features: {json.dumps(curr_features)}')
             input_list[1]['content'] = f'# EXISTING PARTSTUDIO FEATURES\n\n{json.dumps(curr_features)}\n\n'
-        
             logger.debug(f'{log_prefix}: input list: {json.dumps(input_list)}')
+            
+            step_start_ts = time.time()
             response = openai_client.responses.create(
                 model=os.environ['LLM'],
                 input=input_list, # type: ignore
@@ -195,10 +195,13 @@ def generate_llm_response(rag_context, prompt, doc_id):
                     }
                 }
             )
-            
+            step_end_ts = time.time()
+
             input_list.append({ 'role': 'assistant', 'content': response.output_text })
             response_json = json.loads(response.output_text)
+            logger.info(f'{log_prefix}: step {step} {response_json['metadata']['call_type']} ({int(step_end_ts - step_start_ts)}s): {json.dumps(response_json)}')
             if response_json['metadata']['done']:
+                logger.info(f'{log_prefix}: done ({int(step_end_ts - start_ts)}s total)') 
                 break
 
             onshape_res = handle_llm_response(response_json, doc_id, step)
@@ -210,11 +213,6 @@ def generate_llm_response(rag_context, prompt, doc_id):
 def handle_llm_response(response_json, doc_id, step):
     log_prefix = f'handle_llm_response()'
     try:
-        logger.info(f'{log_prefix} step {step}: {json.dumps(response_json)}')
-        if response_json['metadata']['done']:
-            logger.info(f'{log_prefix}: done')
-            return
-
         call_type = response_json['metadata']['call_type']
         onshape_payload = { 'doc_id': doc_id }
         match call_type:
