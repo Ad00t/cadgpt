@@ -1,6 +1,6 @@
 # CADGPT
 
-LLM powered OnShape 3D CAD model generator
+LLM-powered 3D CAD model generator for OnShape
 
 ![Cloud Architecture Overview Diagram](CADGPT.drawio.png "Cloud Architecture Overview")
 
