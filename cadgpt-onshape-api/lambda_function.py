@@ -10,7 +10,7 @@ import dotenv
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
-if os.environ['ENV'] == 'dev': 
+if os.environ['ENV'] == 'dev':
     handler = logging.StreamHandler(sys.stdout)
     formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s')
     handler.setFormatter(formatter)
@@ -19,7 +19,7 @@ if os.environ['ENV'] == 'dev':
 headers = {
     'Accept': 'application/json;charset=UTF-8; qs=0.09',
     'Content-Type': 'application/json',
-    'Authorization': '' 
+    'Authorization': ''
 }
 
 ssm = boto3.client('ssm')
@@ -27,7 +27,7 @@ ssm = boto3.client('ssm')
 def lambda_handler(event, context):
     log_prefix = f'lambda_handler()'
     logger.info(f'{log_prefix}: {event} {context}')
-    
+
     authenticate()
 
     if 'doc_id' in event['payload']:
@@ -35,7 +35,7 @@ def lambda_handler(event, context):
 
     match event['endpoint']:
         case 'search_docs':
-            return make_request(event, 
+            return make_request(event,
                 lambda payload: requests.post(
                     f"{os.environ['URL_BASE']}/documents/search",
                     headers=headers,
@@ -107,7 +107,7 @@ def authenticate() -> None:
 
     os.environ['ONSHAPE_API_KEY'] = ssm.get_parameter(Name='ONSHAPE_API_KEY', WithDecryption=True)['Parameter']['Value']
     os.environ['ONSHAPE_API_SECRET'] = ssm.get_parameter(Name='ONSHAPE_API_SECRET', WithDecryption=True)['Parameter']['Value']
-   
+
     # TODO: replace with oauth
     key = f"{os.environ['ONSHAPE_API_KEY']}:{os.environ['ONSHAPE_API_SECRET']}".encode('utf-8')
     headers['Authorization'] = f"Basic {base64.b64encode(key).decode('utf-8')}"
@@ -115,7 +115,7 @@ def authenticate() -> None:
     logger.info(f'{log_level}: authenticated')
 
 def make_request(event, request_func):
-    log_prefix = f"Endpoint {event['endpoint']}" 
+    log_prefix = f"Endpoint {event['endpoint']}"
     payload = event['payload']
     try:
         response = request_func(payload)

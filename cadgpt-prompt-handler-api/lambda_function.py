@@ -8,7 +8,7 @@ import dotenv
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-if os.environ['ENV'] == 'dev': 
+if os.environ['ENV'] == 'dev':
     handler = logging.StreamHandler(sys.stdout)
     formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s')
     handler.setFormatter(formatter)
@@ -19,7 +19,7 @@ lambda_client = boto3.client('lambda')
 def lambda_handler(event, context):
     log_prefix = f'lambda_handler()'
     logger.info(f'{log_prefix}: {json.dumps(event)}, {context}')
-    
+
     response = lambda_client.invoke(
         FunctionName='cadgpt-prompt-handler',
         InvocationType='Event',

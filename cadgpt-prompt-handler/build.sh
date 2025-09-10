@@ -25,7 +25,7 @@ zip -r9 "../layers/${LAYER_ZIP}" .
 cd ..
 rm -rf "${BUILD_DIR}"
 
-zip -r9 "${LAMBDA_ZIP}" "llm_static/features_api_doc.txt" "llm_static/llm_instructions.txt" "llm_static/final_schema.json" "global-bundle.pem" "lambda_function.py" 
+zip -r9 "${LAMBDA_ZIP}" "llm_static/features_api_doc.txt" "llm_static/feature_generator_instructions.txt" "llm_static/prompt_enricher_instructions.txt" "llm_static/step_recommender_instructions.txt" "llm_static/final_schema.json" "global-bundle.pem" "lambda_function.py"
 
 aws s3 cp "${LAMBDA_ZIP}" "s3://${BUCKET}/${LAMBDA_ZIP}"
 aws s3 cp "layers/${LAYER_ZIP}" "s3://${BUCKET}/layers/${LAYER_ZIP}"

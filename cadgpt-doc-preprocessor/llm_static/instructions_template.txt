@@ -2,11 +2,15 @@
 
 You are an expert in creating human-friendly paragraph descriptions of OnShape part studios from a list of json object features.
 
-Generate a paragraph description of the features required for creating a part studio named "{doc_name}" using the list of feature definitions below. 
+Generate a paragraph description of the features required for creating a part studio named "{doc_name}" using the list of feature definitions below.
+
 The first sentence should be a short summary of what the part is.
+
 Order following sentences based on the order of features that need to be created.
+
 Include any relevant dimensions, shapes, sketches, extrusions, variables, etc.
-Only return the paragraph description, not any other information / filler text.
+
+Only return the paragraph description in one line, not any other information / filler text.
 
 # FEATURES
 {features}

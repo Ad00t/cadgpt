@@ -9,7 +9,7 @@ from openai import OpenAI
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-if os.environ['ENV'] == 'dev': 
+if os.environ['ENV'] == 'dev':
     handler = logging.StreamHandler(sys.stdout)
     formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s')
     handler.setFormatter(formatter)
@@ -32,7 +32,7 @@ def lambda_handler(event, context):
     queries = generate_queries(event['n_queries'])
     for query in queries:
         onshape_doc_search(query, event['n_docs_per_query'])
-       
+
     logger.info(f'{log_prefix}: done')
     return { 'statusCode': 200, 'body': json.dumps({ 'message': 'success' }) }
 
@@ -42,7 +42,7 @@ def init_clients():
     if not (openai_client is None):
         logger.info(f'{log_prefix}: clients already initialized')
         return
-    
+
     os.environ['OPENAI_API_KEY'] = ssm.get_parameter(Name='OPENAI_API_KEY', WithDecryption=True)['Parameter']['Value']
     logger.info(f'{log_prefix}: credentials retrieved')
 
@@ -60,7 +60,7 @@ def generate_queries(n_queries):
          open('llm_static/query_examples.txt', 'r') as examples_file:
         template = template_file.read()
         query_examples = examples_file.read()
-    
+
     instructions = template.format(
         n_queries=n_queries,
         query_examples=query_examples
@@ -94,7 +94,7 @@ def onshape_doc_search(query, n_docs_per_query):
         logger.info(f'{log_prefix}: lambda invoked -- {payload}')
     except Exception as e:
         logger.error(f'{log_prefix}: failed: ', exc_info=True)
-    
+
 if os.environ['ENV'] == 'dev':
     dotenv.load_dotenv('.env')
     with open('test_event.json', 'r') as test_event_file:

@@ -14,7 +14,7 @@ from pymongo import MongoClient
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-if os.environ['ENV'] == 'dev': 
+if os.environ['ENV'] == 'dev':
     handler = logging.StreamHandler(sys.stdout)
     formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s')
     handler.setFormatter(formatter)
@@ -40,7 +40,7 @@ def lambda_handler(event, context):
         doc = event['doc']
         doc_id = doc['doc_id']
         doc_name = doc['doc_name'].strip()
-        new_id = str(uuid.uuid4()) 
+        new_id = str(uuid.uuid4())
 
         if (check_doc_id_exists(doc_id)):
             logger.info(f'{log_prefix}: doc {doc_id} already exists')
@@ -71,7 +71,7 @@ def lambda_handler(event, context):
         insert_dbs(new_id, desc, metadata, features)
     except Exception as e:
         logger.error(f'{log_prefix}: failed:', exc_info=True)
-       
+
     logger.info(f'{log_prefix}: done')
     return { 'statusCode': 200, 'body': json.dumps({ 'message': 'success' }) }
 
@@ -81,10 +81,10 @@ def init_clients():
     if not (openai_client is None or vector_store is None or doc_db is None):
         logger.info(f'{log_prefix}: clients already initialized')
         return
-    
+
     os.environ['OPENAI_API_KEY'] = ssm.get_parameter(Name='OPENAI_API_KEY', WithDecryption=True)['Parameter']['Value']
     os.environ['QDRANT_API_KEY'] = ssm.get_parameter(Name='QDRANT_API_KEY', WithDecryption=True)['Parameter']['Value']
-    os.environ['CADGPT_DOC_DB_PASS'] = ssm.get_parameter(Name='CADGPT_DOC_DB_PASS', WithDecryption=True)['Parameter']['Value'] 
+    os.environ['CADGPT_DOC_DB_PASS'] = ssm.get_parameter(Name='CADGPT_DOC_DB_PASS', WithDecryption=True)['Parameter']['Value']
     logger.info(f'{log_prefix}: credentials retrieved')
 
     openai_client = OpenAI(
@@ -100,9 +100,9 @@ def init_clients():
 
     doc_db = MongoClient(
         host=f"mongodb://{os.environ['DOC_DB_USER']}:{os.environ['CADGPT_DOC_DB_PASS']}@{os.environ['DOC_DB_HOST']}:{os.environ['DOC_DB_PORT']}/?ssl=true&retryWrites=false",
-        tls=True,   
+        tls=True,
         tlsCAFile='global-bundle.pem'
-    )[os.environ['DOC_DB_NAME']]      
+    )[os.environ['DOC_DB_NAME']]
     logger.info(f'{log_prefix}: {doc_db.name} initialized')
 
 def get_features(doc_id):
@@ -124,18 +124,19 @@ def get_features(doc_id):
 def generate_desc(doc_name, features):
     log_prefix = f'generate_desc()'
     global openai_client
-    logger.info(f"{log_prefix}: llm: {os.environ['LLM']}")
+    logger.info(f"{log_prefix}: llm: {os.environ['DESC_GENERATOR_LLM']}")
 
     with open('llm_static/instructions_template.txt', 'r') as template_file:
         template = template_file.read()
-    
+
     instructions = template.format(
         doc_name=doc_name,
         features=json.dumps(features)
     )
 
     response = openai_client.responses.create(
-        model=os.environ['LLM'],
+        model=os.environ['DESC_GENERATOR_LLM'],
+        reasoning={ 'effort': 'medium' },
         input=[
             { 'role': 'developer', 'content': instructions }
         ]

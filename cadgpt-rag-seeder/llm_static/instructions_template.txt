@@ -2,7 +2,7 @@ Generate a line-separated list of {n_queries} simple part descriptions that are 
 
 Do not include any additional characters, numbering, formatting, filler text, quotation marks, etc. Just respond with a line-separated list of part descriptions.
 
-These should be very short, broad-scope labels for generic parts found in industries that use CAD. 
+These should be very short, broad-scope labels for generic parts found in industries that use CAD.
 
 Include dimensions and additional spec details in 50% of descriptions, and leave the other 50% with less information / more plain descriptions.
 

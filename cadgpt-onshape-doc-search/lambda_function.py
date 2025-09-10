@@ -9,7 +9,7 @@ import sys
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-if os.environ['ENV'] == 'dev': 
+if os.environ['ENV'] == 'dev':
     handler = logging.StreamHandler(sys.stdout)
     formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s')
     handler.setFormatter(formatter)
@@ -23,10 +23,10 @@ def lambda_handler(event, context):
 
     n_docs_found = 0
     n_docs = int(event['n_docs'])
-    for offset in range(0, n_docs, 20): 
+    for offset in range(0, n_docs, 20):
         limit = min(20, n_docs - offset)
         logger.info(f'{log_prefix}: offset: {offset} limit: {limit}')
-        
+
         search_obj = json.loads(json.load(
             lambda_client.invoke(
                 FunctionName='cadgpt-onshape-api',
